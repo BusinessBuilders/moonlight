@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const user = result.user as Record<string, unknown>
+    const user = result.user as unknown as Record<string, unknown>
 
     return NextResponse.json({
       token: result.token,
