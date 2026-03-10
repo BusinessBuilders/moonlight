@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 const navLinks = [
@@ -40,19 +41,15 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative w-11 h-11 rounded-full border border-gold-500/30 flex items-center justify-center overflow-hidden group-hover:border-gold-400/60 transition-all duration-500">
-                <div className="absolute inset-0 bg-gradient-to-br from-gold-500/15 to-forest-800/30" />
-                <span className="relative font-display text-gold-400 text-lg font-bold">M</span>
-              </div>
-              <div className="hidden sm:block">
-                <span className="font-display text-lg text-cream-50 block leading-none tracking-tight font-bold">
-                  Moonlight Run
-                </span>
-                <span className="text-[0.65rem] text-gold-400/70 tracking-[0.2em] uppercase font-medium mt-0.5 block">
-                  Farm LLC
-                </span>
-              </div>
+            <Link href="/" className="flex items-center group">
+              <Image
+                src="/logo.png"
+                alt="Moonlight Run Farm"
+                width={180}
+                height={68}
+                className="h-12 w-auto transition-opacity duration-300 group-hover:opacity-90"
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}
