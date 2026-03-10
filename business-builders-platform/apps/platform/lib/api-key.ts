@@ -58,7 +58,7 @@ export async function validateApiKey(
 
   return {
     valid: true,
-    tenantId: tenant.id,
+    tenantId: String(tenant.id),
     tenantSlug: tenant.slug,
     rateLimit: apiKeyDoc.rateLimit || 500,
   }
