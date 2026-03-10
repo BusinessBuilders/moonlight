@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "name": "business-builders-platform",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "dev:platform": "turbo run dev --filter=@business-builders/platform",
+    "dev:moonlight": "turbo run dev --filter=@business-builders/moonlight-farm",
+    "build:platform": "turbo run build --filter=@business-builders/platform",
+    "build:moonlight": "turbo run build --filter=@business-builders/moonlight-farm",
+    "build:cms-client": "turbo run build --filter=@business-builders/cms-client",
+    "db:migrate": "pnpm --filter @business-builders/platform run payload migrate",
+    "db:seed": "pnpm --filter @business-builders/platform run seed"
+  },
+  "devDependencies": {
+    "turbo": "^2.7.0",
+    "typescript": "^5.7.0"
+  },
+  "packageManager": "pnpm@10.6.2",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
+  }
+}
