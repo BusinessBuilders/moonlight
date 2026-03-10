@@ -24,7 +24,7 @@ export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || 'CHANGE-ME-IN-PRODUCTION',
 
   cors: [
-    'http://localhost:3001',
+    'http://localhost:3002',
     'http://localhost:3000',
     process.env.NEXT_PUBLIC_CLIENT_URL || '',
   ].filter(Boolean),
