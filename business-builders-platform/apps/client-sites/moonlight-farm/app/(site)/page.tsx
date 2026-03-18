@@ -4,6 +4,7 @@ import { Card, SectionHeading } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { FacebookPageEmbed, FacebookLikeButton } from '@/components/facebook/FacebookPageEmbed'
+import { Truck, BookOpen, CalendarDays, HeartPulse, PawPrint, Tag } from 'lucide-react'
 
 const animals = [
   'Scottish Highland Cattle',
@@ -19,43 +20,20 @@ const animals = [
   'Great Pyrenees Dogs',
 ]
 
-const services = [
-  {
-    title: 'Livestock & Equine Transport',
-    description: 'Safe, professional hauling for all livestock and equines across New England.',
-    icon: '🚛',
-    href: '/services',
-  },
-  {
-    title: 'Educational Programs',
-    description: 'Hands-on farm experiences for schools, groups, and families.',
-    icon: '📚',
-    href: '/services',
-  },
-  {
-    title: 'Petting Zoos & Events',
-    description: 'Corporate events, birthday parties, weddings, Bar/Bat Mitzvahs, and more.',
-    icon: '🎉',
-    href: '/services',
-  },
-  {
-    title: 'Livestock Services',
-    description: 'Hoof trimming, catching, sorting, ear tagging, castration, worming & vaccination.',
-    icon: '🐄',
-    href: '/services',
-  },
-  {
-    title: 'Dog Boarding',
-    description: 'Your dogs stay on the farm with our experienced team and guardian dogs.',
-    icon: '🐕',
-    href: '/services',
-  },
-  {
-    title: 'Animal Sales',
-    description: 'Quality Highland cattle, goats, poultry, and more — raised with care.',
-    icon: '🏷️',
-    href: '/inquiry',
-  },
+const featuredService = {
+  title: 'Petting Zoos & Events',
+  description: 'Corporate events, birthday parties, weddings, Bar/Bat Mitzvahs — unforgettable farm experiences for any occasion.',
+  Icon: CalendarDays,
+  href: '/services',
+  tags: ['Weddings', 'Corporate', 'Birthdays', 'Sweet 16s', 'Bar/Bat Mitzvahs'],
+}
+
+const compactServices = [
+  { title: 'Livestock & Equine Transport', description: 'Safe hauling across New England', Icon: Truck, href: '/services' },
+  { title: 'Educational Programs', description: 'Schools, scouts & families', Icon: BookOpen, href: '/services' },
+  { title: 'Livestock Services', description: 'Hoof care, tagging & more', Icon: HeartPulse, href: '/services' },
+  { title: 'Dog Boarding', description: 'Farm stays with guardian dogs', Icon: PawPrint, href: '/services' },
+  { title: 'Animal Sales', description: 'Quality breeds, raised with care', Icon: Tag, href: '/inquiry' },
 ]
 
 const products = [
@@ -149,10 +127,9 @@ export default function HomePage() {
       </section>
 
       {/* ═══════════════════════════════════════════
-          SERVICES — Bento-inspired grid
+          SERVICES — Featured hero + compact grid
       ═══════════════════════════════════════════ */}
       <section className="py-28 relative">
-        {/* Subtle section divider glow */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-forest-600/15 to-transparent" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -164,31 +141,63 @@ export default function HomePage() {
             />
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {services.map((service, i) => (
-              <ScrollReveal key={service.title} delay={i * 100}>
-                <Link href={service.href} className="block h-full">
-                  <Card className="h-full group" glow>
-                    <div className="flex items-start gap-4">
-                      <span className="text-3xl flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-500">
-                        {service.icon}
-                      </span>
-                      <div>
-                        <h3 className="font-display text-lg text-cream-50 mb-2 font-bold tracking-tight">
-                          {service.title}
-                        </h3>
-                        <p className="text-cream-300/60 text-sm leading-relaxed font-light">
-                          {service.description}
-                        </p>
-                      </div>
+          {/* Featured Service — Hero Card */}
+          <ScrollReveal delay={100}>
+            <Link href={featuredService.href} className="block group">
+              <div className="glass-card-featured rounded-2xl p-7 sm:p-8 mb-6 relative overflow-hidden">
+                {/* Ambient glow */}
+                <div className="absolute -top-10 -right-10 w-[200px] h-[200px] bg-gold-500/5 rounded-full blur-[80px] group-hover:bg-gold-500/10 transition-all duration-700" />
+
+                <div className="flex flex-col sm:flex-row justify-between items-start gap-6 relative z-10">
+                  <div className="flex-1">
+                    <p className="text-label text-gold-400/70 mb-3 tracking-[0.2em]">Most Popular</p>
+                    <h3 className="text-display text-2xl sm:text-3xl text-cream-50 mb-3">
+                      {featuredService.title}
+                    </h3>
+                    <p className="text-cream-200/50 text-[0.95rem] font-light leading-relaxed max-w-lg mb-5">
+                      {featuredService.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {featuredService.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1.5 bg-forest-700/25 rounded-full text-[0.72rem] text-forest-300/80 border border-forest-600/15 font-light"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
+                  </div>
+                  <div className="w-16 h-16 rounded-2xl border border-gold-500/20 bg-gold-500/5 flex items-center justify-center flex-shrink-0 group-hover:border-gold-400/40 group-hover:bg-gold-500/10 group-hover:scale-105 group-hover:rotate-3 transition-all duration-500">
+                    <featuredService.Icon className="w-8 h-8 text-gold-400/85" strokeWidth={1.5} />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </ScrollReveal>
+
+          {/* Compact Services Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            {compactServices.map((service, i) => (
+              <ScrollReveal key={service.title} delay={200 + i * 80}>
+                <Link href={service.href} className="block h-full group/card">
+                  <Card className="h-full text-center !py-6 !px-4">
+                    <div className="w-12 h-12 mx-auto mb-4 rounded-xl border border-gold-500/15 bg-gold-500/5 flex items-center justify-center group-hover/card:border-gold-400/35 group-hover/card:bg-gold-500/10 group-hover/card:scale-110 group-hover/card:-rotate-3 transition-all duration-500">
+                      <service.Icon className="w-6 h-6 text-gold-400/85" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="font-display text-sm text-cream-50 mb-1.5 font-bold tracking-tight leading-snug">
+                      {service.title}
+                    </h3>
+                    <p className="text-cream-300/45 text-[0.72rem] leading-relaxed font-light">
+                      {service.description}
+                    </p>
                   </Card>
                 </Link>
               </ScrollReveal>
             ))}
           </div>
 
-          <ScrollReveal delay={600}>
+          <ScrollReveal delay={700}>
             <div className="text-center mt-12">
               <Button variant="outline" href="/services">
                 View All Services
