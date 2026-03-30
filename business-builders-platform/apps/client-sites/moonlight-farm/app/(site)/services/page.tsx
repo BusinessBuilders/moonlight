@@ -15,9 +15,9 @@ const services = [
     slug: 'transport',
     icon: '🚛',
     description:
-      'Professional livestock and equine hauling throughout New England. Safe, insured transport with experienced handlers who treat your animals with the same care we give our own.',
+      'Professional livestock and equine hauling nationwide. Safe, insured transport with experienced handlers who treat your animals with the same care we give our own.',
     branch: 'hauling',
-    features: ['Fully insured', 'Experienced handlers', 'Local & regional', 'All livestock types'],
+    features: ['Fully insured', 'Experienced handlers', 'DOT / MC compliant', 'All livestock types'],
   },
   {
     title: 'Educational Programs',
@@ -52,9 +52,9 @@ const services = [
     slug: 'dog-boarding',
     icon: '🐕',
     description:
-      'Your dogs enjoy a farm vacation! Safe, supervised stays with our experienced team and Great Pyrenees guardian dogs. Plenty of space to play and explore.',
+      'Your dogs enjoy a farm vacation! Safe, supervised stays with our experienced team. Plenty of space to play and explore in a natural farm setting.',
     branch: 'general',
-    features: ['Farm environment', 'Supervised outdoor time', 'Great Pyrenees companions', 'Personalized care'],
+    features: ['Farm environment', 'Supervised outdoor time', 'Spacious grounds', 'Personalized care'],
   },
   {
     title: 'Animal Sales',

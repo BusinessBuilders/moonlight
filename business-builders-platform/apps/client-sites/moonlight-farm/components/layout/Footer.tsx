@@ -86,7 +86,7 @@ export function Footer() {
               </Link>
               <div className="flex gap-2.5">
                 <a
-                  href="https://www.facebook.com/moonlightrunfarm"
+                  href="https://www.facebook.com/MoonlightRunFarmLLC"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-lg bg-cream-50/[0.03] border border-cream-300/10 flex items-center justify-center text-cream-300/40 hover:text-cream-100 hover:border-cream-300/25 hover:bg-cream-50/[0.06] transition-all duration-300"

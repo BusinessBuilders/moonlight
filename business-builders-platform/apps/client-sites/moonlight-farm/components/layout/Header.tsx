@@ -34,20 +34,32 @@ export function Header() {
       <div
         className={`transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           scrolled
-            ? 'bg-forest-950/80 backdrop-blur-2xl border-b border-forest-400/10 shadow-[0_4px_30px_rgba(0,0,0,0.3)]'
+            ? 'bg-cream-50/95 backdrop-blur-2xl border-b border-gold-500/10 shadow-[0_4px_30px_rgba(0,0,0,0.08)]'
             : 'bg-transparent border-b border-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link href="/" className="flex items-center group">
+            {/* Logo — white on banner, dark on scroll */}
+            <Link href="/" className="flex items-center group relative">
+              <Image
+                src="/logo-white.png"
+                alt="Moonlight Run Farm"
+                width={200}
+                height={75}
+                className={`h-14 w-auto transition-all duration-500 group-hover:opacity-90 ${
+                  scrolled ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+                }`}
+                priority
+              />
               <Image
                 src="/logo.png"
                 alt="Moonlight Run Farm"
-                width={180}
-                height={68}
-                className="h-12 w-auto transition-opacity duration-300 group-hover:opacity-90"
+                width={200}
+                height={75}
+                className={`h-14 w-auto absolute top-0 left-0 transition-all duration-500 group-hover:opacity-90 ${
+                  scrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                }`}
                 priority
               />
             </Link>
@@ -60,10 +72,14 @@ export function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`px-4 py-2 rounded-lg text-[0.82rem] font-medium transition-all duration-300 relative ${
-                      isActive
-                        ? 'text-cream-50'
-                        : 'text-cream-300/70 hover:text-cream-50'
+                    className={`px-4 py-2 rounded-lg text-[0.82rem] font-medium transition-all duration-500 relative ${
+                      scrolled
+                        ? isActive
+                          ? 'text-forest-950'
+                          : 'text-forest-900/70 hover:text-forest-950'
+                        : isActive
+                          ? 'text-cream-50'
+                          : 'text-cream-200/80 hover:text-cream-50'
                     }`}
                   >
                     {link.label}
@@ -75,7 +91,11 @@ export function Header() {
               })}
               <Link
                 href="/inquiry"
-                className="ml-3 px-5 py-2.5 rounded-xl text-[0.82rem] font-semibold bg-gradient-to-r from-gold-500 to-gold-600 text-forest-950 hover:from-gold-400 hover:to-gold-500 transition-all duration-300 shadow-[0_2px_12px_rgba(201,149,106,0.25)] hover:shadow-[0_4px_20px_rgba(201,149,106,0.35)]"
+                className={`ml-3 px-5 py-2.5 rounded-xl text-[0.82rem] font-semibold transition-all duration-500 ${
+                  scrolled
+                    ? 'bg-gradient-to-r from-forest-800 to-forest-900 text-cream-50 shadow-[0_2px_12px_rgba(27,67,50,0.25)] hover:shadow-[0_4px_20px_rgba(27,67,50,0.35)]'
+                    : 'bg-gradient-to-r from-gold-500 to-gold-600 text-forest-950 shadow-[0_2px_12px_rgba(201,149,106,0.25)] hover:shadow-[0_4px_20px_rgba(201,149,106,0.35)]'
+                }`}
               >
                 Contact Us
               </Link>
@@ -83,7 +103,9 @@ export function Header() {
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden text-cream-300 hover:text-cream-50 p-2 transition-colors"
+              className={`lg:hidden p-2 transition-colors duration-500 ${
+                scrolled ? 'text-forest-900 hover:text-forest-950' : 'text-cream-200 hover:text-cream-50'
+              }`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -115,7 +137,7 @@ export function Header() {
           isMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="bg-forest-950/95 backdrop-blur-2xl border-b border-forest-400/10">
+        <div className="bg-cream-50/98 backdrop-blur-2xl border-b border-gold-500/10">
           <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
             {navLinks.map((link) => {
               const isActive = pathname === link.href
@@ -125,8 +147,8 @@ export function Header() {
                   href={link.href}
                   className={`px-4 py-3 rounded-xl text-[0.95rem] font-medium transition-all duration-300 ${
                     isActive
-                      ? 'text-cream-50 bg-forest-800/30'
-                      : 'text-cream-300/70 hover:text-cream-50 hover:bg-forest-800/20'
+                      ? 'text-forest-950 bg-forest-800/5'
+                      : 'text-forest-900/70 hover:text-forest-950 hover:bg-forest-800/5'
                   }`}
                 >
                   {link.label}
@@ -135,7 +157,7 @@ export function Header() {
             })}
             <Link
               href="/inquiry"
-              className="mt-2 px-4 py-3 rounded-xl text-center font-semibold bg-gradient-to-r from-gold-500 to-gold-600 text-forest-950 hover:from-gold-400 hover:to-gold-500 transition-all"
+              className="mt-2 px-4 py-3 rounded-xl text-center font-semibold bg-gradient-to-r from-forest-800 to-forest-900 text-cream-50 hover:from-forest-700 hover:to-forest-800 transition-all"
             >
               Contact Us
             </Link>

@@ -106,7 +106,7 @@ export default function EventsPage() {
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
             <a
-              href="https://www.facebook.com/moonlightrunfarm"
+              href="https://www.facebook.com/MoonlightRunFarmLLC"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#1877F2] text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-[#166FE5] transition-colors"

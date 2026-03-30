@@ -43,7 +43,7 @@ function loadFacebookSDK() {
 }
 
 export function FacebookPageEmbed({
-  pageUrl = 'https://www.facebook.com/moonlightrunfarm',
+  pageUrl = 'https://www.facebook.com/MoonlightRunFarmLLC',
   tabs = ['timeline'],
   width = 500,
   height = 600,
@@ -90,7 +90,7 @@ export function FacebookPageEmbed({
 }
 
 export function FacebookLikeButton({
-  pageUrl = 'https://www.facebook.com/moonlightrunfarm',
+  pageUrl = 'https://www.facebook.com/MoonlightRunFarmLLC',
   className = '',
 }: {
   pageUrl?: string

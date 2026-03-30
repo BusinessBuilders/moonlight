@@ -3,21 +3,33 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import type { Tenant } from '@/payload-types'
 
-async function getTenants(): Promise<Tenant[]> {
-  const payload = await getPayload({ config })
-  const result = await payload.find({
-    collection: 'tenants',
-    limit: 50,
-    sort: '-createdAt',
-  })
-  return result.docs
+async function getTenants(): Promise<{ tenants: Tenant[]; dbError: boolean }> {
+  try {
+    const payload = await getPayload({ config })
+    const result = await payload.find({
+      collection: 'tenants',
+      limit: 50,
+      sort: '-createdAt',
+    })
+    return { tenants: result.docs, dbError: false }
+  } catch (err) {
+    console.error('[Clients] Failed to fetch tenants:', err)
+    return { tenants: [], dbError: true }
+  }
 }
 
 export default async function ClientsPage() {
-  const tenants = await getTenants()
+  const { tenants, dbError } = await getTenants()
 
   return (
     <div>
+      {dbError && (
+        <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 mb-6">
+          <p className="text-amber-400 text-sm">
+            Database connection unavailable. Set <code className="bg-slate-800 px-1.5 py-0.5 rounded text-xs">DATABASE_URL</code> in your environment.
+          </p>
+        </div>
+      )}
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-3xl font-bold text-white mb-2">Clients</h1>

@@ -25,6 +25,7 @@ export default buildConfig({
 
   cors: [
     'http://localhost:3002',
+    'http://localhost:3004',
     'http://localhost:3000',
     process.env.NEXT_PUBLIC_CLIENT_URL || '',
   ].filter(Boolean),
@@ -33,7 +34,7 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
-    push: process.env.NODE_ENV !== 'production',
+    push: false,
     migrationDir: './migrations',
   }),
 
