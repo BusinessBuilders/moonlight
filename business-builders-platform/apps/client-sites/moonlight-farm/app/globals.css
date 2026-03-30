@@ -300,16 +300,20 @@ body {
 .delay-7 { animation-delay: 0.7s; }
 .delay-8 { animation-delay: 0.8s; }
 
-/* ===== Scroll-Driven Reveal ===== */
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s var(--ease-out-expo);
-}
+/* ===== Accessibility — Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 
-.scroll-reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+  .grain-overlay {
+    animation: none;
+  }
 }
 
 /* ===== Decorative Elements ===== */

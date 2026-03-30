@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { GalleryGrid } from '@/components/gallery/GalleryGrid'
-import { ScrollReveal } from '@/components/ui/ScrollReveal'
 
 export const metadata: Metadata = {
   title: 'Gallery',
@@ -27,9 +26,7 @@ export default function GalleryPage() {
 
       <section className="py-20 ambient-glow relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <ScrollReveal>
-            <GalleryGrid />
-          </ScrollReveal>
+          <GalleryGrid />
         </div>
       </section>
     </>

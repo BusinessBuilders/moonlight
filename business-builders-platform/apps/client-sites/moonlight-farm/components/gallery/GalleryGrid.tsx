@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Modal } from '@/components/ui/Modal'
 
 const categories = [
@@ -25,7 +26,7 @@ interface GalleryImage {
   alt: string
 }
 
-const PLATFORM_URL = process.env.NEXT_PUBLIC_PLATFORM_URL || 'http://localhost:3002'
+const PLATFORM_URL = process.env.NEXT_PUBLIC_PLATFORM_URL || 'http://localhost:3003'
 
 export function GalleryGrid() {
   const [activeCategory, setActiveCategory] = useState('all')
@@ -46,7 +47,6 @@ export function GalleryGrid() {
             const img = doc.image as Record<string, unknown>
             const sizes = img.sizes as Record<string, Record<string, unknown>> | undefined
 
-            // Build image URLs from Payload media
             const cardSize = sizes?.card
             const heroSize = sizes?.hero
             const thumbnailSize = sizes?.thumbnail
@@ -76,7 +76,6 @@ export function GalleryGrid() {
 
         setImages(mapped)
       } catch {
-        // API unavailable — show empty state
         setImages([])
       } finally {
         setLoading(false)
@@ -106,7 +105,12 @@ export function GalleryGrid() {
 
   if (images.length === 0) {
     return (
-      <div className="text-center py-20">
+      <motion.div
+        className="text-center py-20"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: 'spring' as const, damping: 25, stiffness: 120 }}
+      >
         <div className="w-20 h-20 rounded-full border-2 border-forest-600/20 mx-auto mb-6 flex items-center justify-center">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-cream-300/40">
             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
@@ -118,16 +122,20 @@ export function GalleryGrid() {
         <p className="text-cream-300/50 font-light max-w-md mx-auto">
           Photos are being uploaded. Check back soon to see our beautiful animals and farm life.
         </p>
-      </div>
+      </motion.div>
     )
   }
 
   return (
     <>
       {/* Category Filter */}
-      <div className="flex flex-wrap justify-center gap-2 mb-10">
+      <motion.div
+        className="flex flex-wrap justify-center gap-2 mb-10"
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ type: 'spring' as const, damping: 25, stiffness: 150 }}
+      >
         {categories.map((cat) => {
-          // Only show categories that have images
           const count =
             cat.id === 'all'
               ? images.length
@@ -149,35 +157,50 @@ export function GalleryGrid() {
             </button>
           )
         })}
-      </div>
+      </motion.div>
 
       {/* Image Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredImages.map((image) => (
-          <button
-            key={image.id}
-            onClick={() => setSelectedImage(image)}
-            className="group relative aspect-[4/3] overflow-hidden rounded-xl glass-card p-0 cursor-pointer"
-          >
-            <Image
-              src={image.thumbnailUrl}
-              alt={image.alt}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
-            {/* Hover overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-forest-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-              <div>
-                <h3 className="font-display text-cream-50 text-lg">{image.title}</h3>
-                {image.description && (
-                  <p className="text-cream-300/70 text-sm font-light">{image.description}</p>
-                )}
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+        layout
+      >
+        <AnimatePresence mode="popLayout">
+          {filteredImages.map((image, i) => (
+            <motion.button
+              key={image.id}
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{
+                type: 'spring' as const,
+                damping: 25,
+                stiffness: 200,
+                delay: i * 0.04,
+              }}
+              onClick={() => setSelectedImage(image)}
+              className="group relative aspect-[4/3] overflow-hidden rounded-xl glass-card p-0 cursor-pointer"
+            >
+              <Image
+                src={image.thumbnailUrl}
+                alt={image.alt}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+              {/* Hover overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-forest-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <div>
+                  <h3 className="font-display text-cream-50 text-lg">{image.title}</h3>
+                  {image.description && (
+                    <p className="text-cream-300/70 text-sm font-light">{image.description}</p>
+                  )}
+                </div>
               </div>
-            </div>
-          </button>
-        ))}
-      </div>
+            </motion.button>
+          ))}
+        </AnimatePresence>
+      </motion.div>
 
       {filteredImages.length === 0 && (
         <div className="text-center py-16">
