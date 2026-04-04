@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
-import { Card, SectionHeading } from '@/components/ui/Card'
+import { Card } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
+import { PageHero } from '@/components/ui/PageHero'
 
 export const metadata: Metadata = {
   title: 'Farm Store',
@@ -71,25 +72,14 @@ const products = [
 export default function StorePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="hero-gradient relative py-28 overflow-hidden">
-        <div className="absolute top-1/2 left-[10%] w-[400px] h-[400px] bg-gold-500/5 rounded-full blur-[120px]" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <p className="text-label text-gold-400/80 mb-5 animate-reveal delay-1">Farm Store</p>
-          <h1 className="text-display text-5xl sm:text-6xl lg:text-7xl text-cream-50 mb-6 animate-reveal delay-2">
-            From Our Farm
-            <br />
-            <span className="gradient-text">To Your Table</span>
-          </h1>
-          <p className="text-cream-200/60 text-xl font-light max-w-xl leading-relaxed animate-reveal delay-3">
-            No hormones. No steroids. No antibiotics.
-          </p>
-          <p className="text-cream-300/30 text-base italic font-display mt-2 animate-reveal delay-4">
-            &ldquo;Full transparency is our policy&rdquo;
-          </p>
-        </div>
-      </section>
+      <PageHero
+        image="/moonlight4.jpg"
+        imageAlt="Highland Cattle at Moonlight Run Farm"
+        imagePosition="center 50%"
+        label="Farm Store"
+        title={<>From Our Farm<br /><span className="gradient-text">To Your Table</span></>}
+        description="No hormones. No steroids. No antibiotics."
+      />
 
       {/* Quality Promise */}
       <section className="py-10 relative">

@@ -3,6 +3,7 @@ import { Suspense } from 'react'
 import { Button } from '@/components/ui/Button'
 import { FacebookPageEmbed } from '@/components/facebook/FacebookPageEmbed'
 import { EventsList } from '@/components/events/EventsList'
+import { PageHero } from '@/components/ui/PageHero'
 
 export const metadata: Metadata = {
   title: 'Events',
@@ -13,20 +14,14 @@ export const metadata: Metadata = {
 export default function EventsPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="hero-gradient relative py-28 overflow-hidden">
-        <div className="absolute top-1/3 right-[10%] w-[400px] h-[400px] bg-gold-500/5 rounded-full blur-[120px]" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <p className="text-label text-gold-400/80 mb-5 animate-reveal delay-1">What&apos;s Happening</p>
-          <h1 className="text-display text-5xl sm:text-6xl lg:text-7xl text-cream-50 mb-6 animate-reveal delay-2">
-            Events
-          </h1>
-          <p className="text-cream-200/60 text-xl font-light max-w-2xl leading-relaxed animate-reveal delay-3">
-            Farm tours, petting zoos, educational programs, and seasonal celebrations.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        image="/moonlightEvents.jpg"
+        imageAlt="Highland Calf at a wedding event with Moonlight Run Farm"
+        imagePosition="center 30%"
+        label="What&apos;s Happening"
+        title="Events"
+        description="Farm tours, petting zoos, educational programs, and seasonal celebrations."
+      />
 
       {/* CMS Events */}
       <section className="py-20 ambient-glow relative">

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -16,19 +17,14 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14">
             {/* Brand */}
             <div className="lg:col-span-1">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="relative w-10 h-10 rounded-full border border-gold-500/30 flex items-center justify-center overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-gold-500/15 to-forest-800/30" />
-                  <span className="relative font-display text-gold-400 text-base font-bold">M</span>
-                </div>
-                <div>
-                  <span className="font-display text-base text-cream-50 block leading-none tracking-tight font-bold">
-                    Moonlight Run
-                  </span>
-                  <span className="text-[0.6rem] text-gold-400/60 tracking-[0.2em] uppercase font-medium mt-0.5 block">
-                    Farm LLC
-                  </span>
-                </div>
+              <div className="mb-5">
+                <Image
+                  src="/logo-white.png"
+                  alt="Moonlight Run Farm LLC"
+                  width={180}
+                  height={60}
+                  className="object-contain opacity-90"
+                />
               </div>
               <p className="text-cream-300/60 text-sm leading-relaxed font-light">
                 Highland Cattle & Specialty Animals

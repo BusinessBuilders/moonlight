@@ -15,10 +15,10 @@ const featuredService = {
 }
 
 const compactServices = [
-  { title: 'Livestock & Equine Transport', description: 'Safe hauling across New England', Icon: Truck, href: '/services' },
+  { title: 'Livestock & Equine Transport', description: 'Safe nationwide hauling', Icon: Truck, href: '/services' },
   { title: 'Educational Programs', description: 'Schools, scouts & families', Icon: BookOpen, href: '/services' },
   { title: 'Livestock Services', description: 'Hoof care, tagging & more', Icon: HeartPulse, href: '/services' },
-  { title: 'Dog Boarding', description: 'Farm stays with guardian dogs', Icon: PawPrint, href: '/services' },
+  { title: 'Dog Boarding', description: 'Farm vacation for your dogs', Icon: PawPrint, href: '/services' },
   { title: 'Animal Sales', description: 'Quality breeds, raised with care', Icon: Tag, href: '/inquiry' },
 ]
 

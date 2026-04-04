@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
-import { Card, SectionHeading } from '@/components/ui/Card'
+import { Card } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
+import { PageHero } from '@/components/ui/PageHero'
 
 export const metadata: Metadata = {
   title: 'Services',
@@ -33,10 +34,10 @@ const services = [
     slug: 'petting-zoos',
     icon: '🎉',
     description:
-      'We bring the farm to you! Perfect for corporate events, birthday parties, weddings, Bar/Bat Mitzvahs, Sweet 16s, and any special occasion. Our friendly animals are crowd favorites.',
+      'We bring the farm to your location! Perfect for corporate events, birthday parties, weddings, Bar/Bat Mitzvahs, Sweet 16s, and any special occasion. Our friendly animals are crowd favorites.',
     branch: 'events',
     featured: true,
-    features: ['Mobile setup', 'Full supervision', 'All event types', 'Custom packages'],
+    features: ['We come to you', 'Full supervision', 'All event types', 'Custom packages'],
   },
   {
     title: 'Livestock Services',
@@ -79,21 +80,14 @@ const services = [
 export default function ServicesPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="hero-gradient relative py-28 overflow-hidden">
-        <div className="absolute top-1/3 right-[5%] w-[400px] h-[400px] bg-forest-600/8 rounded-full blur-[120px]" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <p className="text-label text-gold-400/80 mb-5 animate-reveal delay-1">What We Do</p>
-          <h1 className="text-display text-5xl sm:text-6xl lg:text-7xl text-cream-50 mb-6 animate-reveal delay-2">
-            Our Services
-          </h1>
-          <p className="text-cream-200/60 text-xl font-light max-w-2xl leading-relaxed animate-reveal delay-3">
-            From livestock transport to farm events — every service is delivered with the care and
-            expertise of experienced farmers and nurses.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        image="/moonlight4.jpg"
+        imageAlt="Highland Cattle at Moonlight Run Farm"
+        imagePosition="center 40%"
+        label="What We Do"
+        title="Our Services"
+        description="From livestock transport to farm events — every service is delivered with the care and expertise of experienced farmers and nurses."
+      />
 
       {/* Services */}
       <section className="py-28 ambient-glow relative">

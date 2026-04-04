@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Card, SectionHeading } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
+import { PageHero } from '@/components/ui/PageHero'
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -12,23 +13,14 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="hero-gradient relative py-28 overflow-hidden">
-        <div className="absolute bottom-0 left-[15%] w-[500px] h-[400px] bg-gold-500/5 rounded-full blur-[140px]" />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <p className="text-label text-gold-400/80 mb-5 animate-reveal delay-1">Our Story</p>
-          <h1 className="text-display text-5xl sm:text-6xl lg:text-7xl text-cream-50 mb-6 animate-reveal delay-2">
-            Nurses Turned
-            <br />
-            <span className="gradient-text">Farmers</span>
-          </h1>
-          <p className="text-cream-200/60 text-xl font-light max-w-2xl leading-relaxed animate-reveal delay-3">
-            A passion for regenerative agriculture, quality food, and the love of animals
-            drives everything we do.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        image="/banner.jpg"
+        imageAlt="Highland Cattle in pasture at Moonlight Run Farm"
+        imagePosition="center 35%"
+        label="Our Story"
+        title={<>Nurses Turned<br /><span className="gradient-text">Farmers</span></>}
+        description="A passion for regenerative agriculture, quality food, and the love of animals drives everything we do."
+      />
 
       {/* Owners Story */}
       <section className="py-28 ambient-glow relative">
