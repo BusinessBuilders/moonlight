@@ -16,7 +16,7 @@ export default function AboutPage() {
       <PageHero
         image="/banner.jpg"
         imageAlt="Highland Cattle in pasture at Moonlight Run Farm"
-        imagePosition="center 35%"
+        imagePosition="center 58%"
         label="Our Story"
         title={<>Nurses Turned<br /><span className="gradient-text">Farmers</span></>}
         description="A passion for regenerative agriculture, quality food, and the love of animals drives everything we do."

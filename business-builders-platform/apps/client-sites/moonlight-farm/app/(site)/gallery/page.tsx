@@ -14,7 +14,7 @@ export default function GalleryPage() {
       <PageHero
         image="/moonlight3.jpg"
         imageAlt="Painted Desert Sheep at Moonlight Run Farm"
-        imagePosition="center 45%"
+        imagePosition="center 22%"
         label="The Farm"
         title="Photo Gallery"
         description="Take a virtual tour of Moonlight Run Farm and meet our beautiful animals."

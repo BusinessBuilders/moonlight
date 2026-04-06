@@ -83,7 +83,7 @@ export default function ServicesPage() {
       <PageHero
         image="/moonlight4.jpg"
         imageAlt="Highland Cattle at Moonlight Run Farm"
-        imagePosition="center 40%"
+        imagePosition="center 68%"
         label="What We Do"
         title="Our Services"
         description="From livestock transport to farm events — every service is delivered with the care and expertise of experienced farmers and nurses."

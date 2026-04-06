@@ -75,7 +75,7 @@ export default function StorePage() {
       <PageHero
         image="/moonlight4.jpg"
         imageAlt="Highland Cattle at Moonlight Run Farm"
-        imagePosition="center 50%"
+        imagePosition="center 68%"
         label="Farm Store"
         title={<>From Our Farm<br /><span className="gradient-text">To Your Table</span></>}
         description="No hormones. No steroids. No antibiotics."

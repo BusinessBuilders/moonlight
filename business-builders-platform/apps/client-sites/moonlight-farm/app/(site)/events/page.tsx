@@ -17,7 +17,7 @@ export default function EventsPage() {
       <PageHero
         image="/moonlightEvents.jpg"
         imageAlt="Highland Calf at a wedding event with Moonlight Run Farm"
-        imagePosition="center 30%"
+        imagePosition="center 38%"
         label="What&apos;s Happening"
         title="Events"
         description="Farm tours, petting zoos, educational programs, and seasonal celebrations."
