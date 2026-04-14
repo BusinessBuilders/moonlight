@@ -189,25 +189,36 @@ export function InquiryWizard() {
     setSubmitError(null)
 
     try {
-      const response = await fetch('/api/inquiry', {
+      const formData = new FormData()
+      formData.append('access_key', 'e0472c8e-b148-41e4-a0f1-1d182dc00834')
+      formData.append('name', contactInfo.name)
+      formData.append('email', contactInfo.email)
+      formData.append('subject', `New Inquiry: ${selectedBranch.label} — Moonlight Run Farm`)
+
+      const lines: string[] = [`Category: ${selectedBranch.label}`, '']
+      selectedBranch.questions.forEach((q) => {
+        const rawVal = answers[q.fieldName]
+        const displayVal =
+          q.inputType === 'select' && q.options
+            ? q.options.find((o) => o.value === rawVal)?.label || rawVal || '—'
+            : rawVal || '—'
+        lines.push(`${q.label}: ${displayVal}`)
+      })
+      if (contactInfo.phone) { lines.push(''); lines.push(`Phone: ${contactInfo.phone}`) }
+      if (contactInfo.message) { lines.push(''); lines.push(`Additional Message: ${contactInfo.message}`) }
+      formData.append('message', lines.join('\n'))
+
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          branchId: selectedBranch.branchId,
-          branchLabel: selectedBranch.label,
-          name: contactInfo.name,
-          email: contactInfo.email,
-          phone: contactInfo.phone,
-          answers,
-          additionalMessage: contactInfo.message,
-        }),
+        body: formData,
       })
 
-      if (!response.ok) {
-        throw new Error('Failed to submit inquiry')
+      const data = await response.json()
+      if (data.success) {
+        setStep('success')
+      } else {
+        throw new Error(data.message || 'Submission failed')
       }
-
-      setStep('success')
     } catch {
       setSubmitError('Something went wrong. Please try again or email us directly at moonlightrunfarmllc@gmail.com')
     } finally {
