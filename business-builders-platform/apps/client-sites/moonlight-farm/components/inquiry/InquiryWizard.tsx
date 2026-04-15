@@ -195,6 +195,7 @@ export function InquiryWizard() {
       formData.append('email', contactInfo.email)
       formData.append('subject', `New Inquiry: ${selectedBranch.label} — Moonlight Run Farm`)
       formData.append('cc', 'donovan@business-builder.online')
+      formData.append('from_name', 'Moonlight Run Farm')
 
       const lines: string[] = [`Category: ${selectedBranch.label}`, '']
       selectedBranch.questions.forEach((q) => {
