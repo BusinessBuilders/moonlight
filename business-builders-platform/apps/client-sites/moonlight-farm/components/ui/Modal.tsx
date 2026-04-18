@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 
 interface ModalProps {
   isOpen: boolean
@@ -10,38 +10,38 @@ interface ModalProps {
 }
 
 export function Modal({ isOpen, onClose, children, title }: ModalProps) {
-  const dialogRef = useRef<HTMLDialogElement>(null)
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [isOpen])
 
   useEffect(() => {
-    const dialog = dialogRef.current
-    if (!dialog) return
-
-    if (isOpen) {
-      dialog.showModal()
-    } else {
-      dialog.close()
-    }
-  }, [isOpen])
+    if (!isOpen) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [isOpen, onClose])
 
   if (!isOpen) return null
 
   return (
-    <dialog
-      ref={dialogRef}
-      className="fixed inset-0 z-50 bg-transparent backdrop:bg-black/70 backdrop:backdrop-blur-sm"
-      onClose={onClose}
-      onClick={(e) => {
-        if (e.target === dialogRef.current) onClose()
-      }}
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+      role="dialog"
+      aria-modal="true"
     >
-      <div className="glass-card rounded-2xl p-8 max-w-2xl w-full mx-auto mt-[10vh] max-h-[80vh] overflow-y-auto">
+      <div
+        className="absolute inset-0 bg-black/75 backdrop-blur-sm"
+        onClick={onClose}
+      />
+      <div className="relative z-10 glass-card rounded-2xl p-6 sm:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between mb-6">
           {title && (
-            <h2 className="font-display text-2xl text-cream-50">{title}</h2>
+            <h2 className="font-display text-xl sm:text-2xl text-ink-900 pr-4">{title}</h2>
           )}
           <button
             onClick={onClose}
-            className="text-cream-300 hover:text-cream-50 transition-colors ml-auto"
+            className="text-ink-700 hover:text-ink-900 transition-colors ml-auto flex-shrink-0"
             aria-label="Close"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -51,6 +51,6 @@ export function Modal({ isOpen, onClose, children, title }: ModalProps) {
         </div>
         {children}
       </div>
-    </dialog>
+    </div>
   )
 }

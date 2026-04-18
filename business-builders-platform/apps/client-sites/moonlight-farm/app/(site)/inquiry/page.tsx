@@ -13,8 +13,8 @@ export default function InquiryPage() {
     <>
       <section className="hero-gradient py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-display text-5xl text-cream-50 mb-4">How Can We Help You?</h1>
-          <p className="text-cream-200 text-xl max-w-2xl mx-auto">
+          <h1 className="text-display text-5xl text-cream-50 mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">How Can We Help You?</h1>
+          <p className="text-cream-100/85 text-xl max-w-2xl mx-auto font-light">
             Select the option that best describes your inquiry and we&apos;ll guide you through the process.
           </p>
         </div>

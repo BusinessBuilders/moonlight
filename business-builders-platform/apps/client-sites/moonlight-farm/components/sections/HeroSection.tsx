@@ -18,15 +18,12 @@ export function HeroSection() {
         sizes="100vw"
       />
 
-      {/* Layered gradient system for depth and readability */}
-      {/* Layer 1: Top fade — dark for white logo/nav contrast */}
-      <div className="absolute inset-0 bg-gradient-to-b from-forest-950/80 via-forest-950/40 via-[25%] to-transparent" />
-      {/* Layer 2: Bottom fade — text area contrast */}
-      <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/85 via-[40%] to-transparent" />
-      {/* Layer 3: Subtle overall darken + color tint for cohesion */}
-      <div className="absolute inset-0 bg-forest-950/30 mix-blend-multiply" />
-      {/* Layer 4: Vignette edges */}
-      <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 40%, rgba(10,26,18,0.6) 100%)' }} />
+      {/* Top: soft ink glaze for logo/nav contrast */}
+      <div className="absolute inset-0 bg-gradient-to-b from-ink-900/30 via-transparent to-transparent" />
+      {/* Bottom: cream fade so photo merges into light page */}
+      <div className="absolute inset-0 bg-gradient-to-t from-meadow-50 via-meadow-50/75 via-[35%] to-transparent" />
+      {/* Warm earth vignette — not green */}
+      <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 50%, rgba(78,55,42,0.38) 100%)' }} />
 
       {/* Ambient orbs on top of image */}
       <div className="absolute top-1/4 right-[10%] w-[500px] h-[500px] bg-forest-600/8 rounded-full blur-[150px] animate-pulse" />
@@ -53,7 +50,7 @@ export function HeroSection() {
             }}
             style={{ transformOrigin: 'left center' }}
           >
-            <h1 className="text-display text-6xl sm:text-7xl lg:text-[5.5rem] text-cream-50 mb-2">
+            <h1 className="text-display text-5xl sm:text-6xl lg:text-[5.5rem] mb-2">
               Moonlight Run
             </h1>
           </motion.div>
@@ -70,19 +67,19 @@ export function HeroSection() {
             }}
             style={{ transformOrigin: 'left center' }}
           >
-            <h1 className="text-display text-6xl sm:text-7xl lg:text-[5.5rem] mb-8">
+            <h1 className="text-display text-5xl sm:text-6xl lg:text-[5.5rem] mb-8">
               <span className="gradient-text">Farm LLC</span>
             </h1>
           </motion.div>
 
           <HeroReveal index={3}>
-            <p className="text-cream-200/80 text-xl sm:text-2xl font-light leading-relaxed max-w-xl mb-3">
+            <p className="text-gold-400 text-xl sm:text-2xl font-light leading-relaxed max-w-xl mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
               Highland Cattle & Specialty Animals
             </p>
           </HeroReveal>
 
           <HeroReveal index={4}>
-            <p className="text-cream-300/40 text-base italic font-display mb-12">
+            <p className="text-ink-700 text-base italic font-display mb-12">
               &ldquo;Full transparency is our policy&rdquo;
             </p>
           </HeroReveal>
@@ -106,7 +103,7 @@ export function HeroSection() {
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
       >
-        <div className="w-5 h-8 rounded-full border border-cream-300/30 flex items-start justify-center p-1">
+        <div className="w-5 h-8 rounded-full border border-earth-600/30 flex items-start justify-center p-1">
           <motion.div
             className="w-1 h-2 rounded-full bg-cream-300/50"
             animate={{ opacity: [0.5, 1, 0.5] }}

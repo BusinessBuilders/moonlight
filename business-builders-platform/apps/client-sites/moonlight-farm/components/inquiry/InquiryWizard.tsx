@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { Tag, Sparkles, Truck, MessageCircle, CircleCheck } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { Card } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 
@@ -18,8 +20,16 @@ interface Branch {
   branchId: string
   label: string
   description: string
-  icon: string
+  Icon: LucideIcon
   questions: BranchQuestion[]
+}
+
+function BranchIcon({ Icon }: { Icon: LucideIcon }) {
+  return (
+    <div className="w-10 h-10 rounded-lg bg-sage-600/30 border border-gold-500/15 flex items-center justify-center flex-shrink-0">
+      <Icon className="w-5 h-5 text-gold-400" strokeWidth={1.5} />
+    </div>
+  )
 }
 
 const defaultBranches: Branch[] = [
@@ -27,7 +37,7 @@ const defaultBranches: Branch[] = [
     branchId: 'animal-sales',
     label: 'Animal Sales',
     description: 'Interested in purchasing livestock or poultry',
-    icon: '🐄',
+    Icon: Tag,
     questions: [
       {
         fieldName: 'animalType',
@@ -64,7 +74,7 @@ const defaultBranches: Branch[] = [
     branchId: 'events',
     label: 'Events & Petting Zoos',
     description: 'Book a petting zoo, educational program, or special event',
-    icon: '🎉',
+    Icon: Sparkles,
     questions: [
       {
         fieldName: 'eventType',
@@ -83,24 +93,13 @@ const defaultBranches: Branch[] = [
       },
       { fieldName: 'guestCount', label: 'Estimated number of guests?', inputType: 'number', required: true, placeholder: 'Approximate headcount' },
       { fieldName: 'preferredDate', label: 'Preferred date(s)?', inputType: 'text', required: true, placeholder: 'e.g., June 15, 2026 or flexible' },
-      {
-        fieldName: 'cateringNeeded',
-        label: 'Do you need catering information?',
-        inputType: 'select',
-        required: false,
-        options: [
-          { label: 'Yes', value: 'yes' },
-          { label: 'No', value: 'no' },
-          { label: 'Maybe — tell me more', value: 'maybe' },
-        ],
-      },
     ],
   },
   {
     branchId: 'hauling',
     label: 'Livestock Transport',
     description: 'Livestock & equine hauling services',
-    icon: '🚛',
+    Icon: Truck,
     questions: [
       { fieldName: 'pickup', label: 'Pickup location', inputType: 'text', required: true, placeholder: 'City, State or full address' },
       { fieldName: 'destination', label: 'Destination', inputType: 'text', required: true, placeholder: 'City, State or full address' },
@@ -112,7 +111,7 @@ const defaultBranches: Branch[] = [
     branchId: 'general',
     label: 'General Inquiry',
     description: 'Questions about products, services, or anything else',
-    icon: '💬',
+    Icon: MessageCircle,
     questions: [
       {
         fieldName: 'topic',
@@ -235,7 +234,7 @@ export function InquiryWizard() {
         <select
           value={value}
           onChange={(e) => handleAnswerChange(question.fieldName, e.target.value)}
-          className="w-full bg-forest-900/60 border border-forest-700/50 rounded-lg px-4 py-3 text-cream-50 focus:outline-none focus:border-forest-500 transition-colors"
+          className="w-full bg-stone-100/60 border border-sage-600/50 rounded-lg px-4 py-3 text-ink-900 focus:outline-none focus:border-sage-500 transition-colors"
         >
           <option value="">Select an option...</option>
           {question.options.map((opt) => (
@@ -254,7 +253,7 @@ export function InquiryWizard() {
           onChange={(e) => handleAnswerChange(question.fieldName, e.target.value)}
           placeholder={question.placeholder}
           rows={4}
-          className="w-full bg-forest-900/60 border border-forest-700/50 rounded-lg px-4 py-3 text-cream-50 placeholder:text-cream-300/40 focus:outline-none focus:border-forest-500 transition-colors resize-none"
+          className="w-full bg-stone-100/60 border border-sage-600/50 rounded-lg px-4 py-3 text-ink-900 placeholder:text-ink-700/40 focus:outline-none focus:border-sage-500 transition-colors resize-none"
         />
       )
     }
@@ -265,7 +264,7 @@ export function InquiryWizard() {
         value={value}
         onChange={(e) => handleAnswerChange(question.fieldName, e.target.value)}
         placeholder={question.placeholder}
-        className="w-full bg-forest-900/60 border border-forest-700/50 rounded-lg px-4 py-3 text-cream-50 placeholder:text-cream-300/40 focus:outline-none focus:border-forest-500 transition-colors"
+        className="w-full bg-stone-100/60 border border-sage-600/50 rounded-lg px-4 py-3 text-ink-900 placeholder:text-ink-700/40 focus:outline-none focus:border-sage-500 transition-colors"
       />
     )
   }
@@ -274,9 +273,11 @@ export function InquiryWizard() {
   if (step === 'success') {
     return (
       <Card className="text-center py-12">
-        <div className="text-5xl mb-6">✅</div>
-        <h2 className="font-display text-3xl text-cream-50 mb-4">Thank You!</h2>
-        <p className="text-cream-300 text-lg max-w-md mx-auto mb-8">
+        <div className="w-14 h-14 rounded-full bg-sage-600/30 border border-gold-500/20 flex items-center justify-center mx-auto mb-6">
+          <CircleCheck className="w-7 h-7 text-gold-400" strokeWidth={1.5} />
+        </div>
+        <h2 className="font-display text-3xl text-ink-900 mb-4">Thank You!</h2>
+        <p className="text-ink-700 text-lg max-w-md mx-auto mb-8">
           We&apos;ve received your inquiry and will get back to you within 24-48 hours.
         </p>
         <Button variant="outline" onClick={() => { setStep('select-branch'); setSelectedBranch(null); setAnswers({}); setContactInfo({ name: '', email: '', phone: '', message: '' }) }}>
@@ -291,15 +292,15 @@ export function InquiryWizard() {
       {/* Progress Bar */}
       <div className="mb-10">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-cream-300 text-sm">Step {currentStepNum} of {totalSteps}</span>
-          <span className="text-cream-300/60 text-sm">
+          <span className="text-ink-700 text-sm">Step {currentStepNum} of {totalSteps}</span>
+          <span className="text-ink-700/60 text-sm">
             {step === 'select-branch' && 'Choose Category'}
             {step === 'questions' && selectedBranch?.label}
             {step === 'contact' && 'Your Information'}
             {step === 'review' && 'Review & Submit'}
           </span>
         </div>
-        <div className="h-1.5 bg-forest-800/50 rounded-full overflow-hidden">
+        <div className="h-1.5 bg-sage-600/50 rounded-full overflow-hidden">
           <div
             className="h-full bg-gradient-to-r from-forest-500 to-gold-400 rounded-full transition-all duration-500"
             style={{ width: `${(currentStepNum / totalSteps) * 100}%` }}
@@ -317,9 +318,13 @@ export function InquiryWizard() {
               className="text-left"
             >
               <Card className="h-full cursor-pointer">
-                <span className="text-3xl mb-3 block">{branch.icon}</span>
-                <h3 className="font-display text-xl text-cream-50 mb-1">{branch.label}</h3>
-                <p className="text-cream-300 text-sm">{branch.description}</p>
+                <div className="flex items-start gap-4">
+                  <BranchIcon Icon={branch.Icon} />
+                  <div>
+                    <h3 className="font-display text-xl text-ink-900 mb-1 tracking-tight">{branch.label}</h3>
+                    <p className="text-ink-700/60 text-sm leading-relaxed font-light">{branch.description}</p>
+                  </div>
+                </div>
               </Card>
             </button>
           ))}
@@ -329,13 +334,16 @@ export function InquiryWizard() {
       {/* Step 2: Branch Questions */}
       {step === 'questions' && selectedBranch && (
         <Card>
-          <h2 className="font-display text-2xl text-cream-50 mb-6">
-            {selectedBranch.icon} {selectedBranch.label}
-          </h2>
+          <div className="flex items-center gap-3 mb-6">
+            <BranchIcon Icon={selectedBranch.Icon} />
+            <h2 className="font-display text-2xl text-ink-900 tracking-tight">
+              {selectedBranch.label}
+            </h2>
+          </div>
           <div className="space-y-6">
             {selectedBranch.questions.map((question) => (
               <div key={question.fieldName}>
-                <label className="block text-cream-200 text-sm font-medium mb-2">
+                <label className="block text-ink-800 text-sm font-medium mb-2">
                   {question.label}
                   {question.required && <span className="text-gold-400 ml-1">*</span>}
                 </label>
@@ -361,10 +369,10 @@ export function InquiryWizard() {
       {/* Step 3: Contact Info */}
       {step === 'contact' && (
         <Card>
-          <h2 className="font-display text-2xl text-cream-50 mb-6">Your Contact Information</h2>
+          <h2 className="font-display text-2xl text-ink-900 mb-6">Your Contact Information</h2>
           <div className="space-y-5">
             <div>
-              <label className="block text-cream-200 text-sm font-medium mb-2">
+              <label className="block text-ink-800 text-sm font-medium mb-2">
                 Full Name <span className="text-gold-400">*</span>
               </label>
               <input
@@ -372,11 +380,11 @@ export function InquiryWizard() {
                 value={contactInfo.name}
                 onChange={(e) => handleContactChange('name', e.target.value)}
                 placeholder="Your name"
-                className="w-full bg-forest-900/60 border border-forest-700/50 rounded-lg px-4 py-3 text-cream-50 placeholder:text-cream-300/40 focus:outline-none focus:border-forest-500 transition-colors"
+                className="w-full bg-stone-100/60 border border-sage-600/50 rounded-lg px-4 py-3 text-ink-900 placeholder:text-ink-700/40 focus:outline-none focus:border-sage-500 transition-colors"
               />
             </div>
             <div>
-              <label className="block text-cream-200 text-sm font-medium mb-2">
+              <label className="block text-ink-800 text-sm font-medium mb-2">
                 Email Address <span className="text-gold-400">*</span>
               </label>
               <input
@@ -384,27 +392,27 @@ export function InquiryWizard() {
                 value={contactInfo.email}
                 onChange={(e) => handleContactChange('email', e.target.value)}
                 placeholder="your@email.com"
-                className="w-full bg-forest-900/60 border border-forest-700/50 rounded-lg px-4 py-3 text-cream-50 placeholder:text-cream-300/40 focus:outline-none focus:border-forest-500 transition-colors"
+                className="w-full bg-stone-100/60 border border-sage-600/50 rounded-lg px-4 py-3 text-ink-900 placeholder:text-ink-700/40 focus:outline-none focus:border-sage-500 transition-colors"
               />
             </div>
             <div>
-              <label className="block text-cream-200 text-sm font-medium mb-2">Phone Number</label>
+              <label className="block text-ink-800 text-sm font-medium mb-2">Phone Number</label>
               <input
                 type="tel"
                 value={contactInfo.phone}
                 onChange={(e) => handleContactChange('phone', e.target.value)}
                 placeholder="(555) 123-4567"
-                className="w-full bg-forest-900/60 border border-forest-700/50 rounded-lg px-4 py-3 text-cream-50 placeholder:text-cream-300/40 focus:outline-none focus:border-forest-500 transition-colors"
+                className="w-full bg-stone-100/60 border border-sage-600/50 rounded-lg px-4 py-3 text-ink-900 placeholder:text-ink-700/40 focus:outline-none focus:border-sage-500 transition-colors"
               />
             </div>
             <div>
-              <label className="block text-cream-200 text-sm font-medium mb-2">Additional Message</label>
+              <label className="block text-ink-800 text-sm font-medium mb-2">Additional Message</label>
               <textarea
                 value={contactInfo.message}
                 onChange={(e) => handleContactChange('message', e.target.value)}
                 placeholder="Anything else you'd like us to know?"
                 rows={3}
-                className="w-full bg-forest-900/60 border border-forest-700/50 rounded-lg px-4 py-3 text-cream-50 placeholder:text-cream-300/40 focus:outline-none focus:border-forest-500 transition-colors resize-none"
+                className="w-full bg-stone-100/60 border border-sage-600/50 rounded-lg px-4 py-3 text-ink-900 placeholder:text-ink-700/40 focus:outline-none focus:border-sage-500 transition-colors resize-none"
               />
             </div>
           </div>
@@ -426,12 +434,12 @@ export function InquiryWizard() {
       {/* Step 4: Review & Submit */}
       {step === 'review' && selectedBranch && (
         <Card>
-          <h2 className="font-display text-2xl text-cream-50 mb-6">Review Your Inquiry</h2>
+          <h2 className="font-display text-2xl text-ink-900 mb-6">Review Your Inquiry</h2>
 
           <div className="space-y-4 mb-6">
             <div className="glass-card !transform-none rounded-lg p-4">
               <h3 className="text-gold-400 text-sm font-medium mb-2">Category</h3>
-              <p className="text-cream-50">{selectedBranch.icon} {selectedBranch.label}</p>
+              <p className="text-ink-900">{selectedBranch.label}</p>
             </div>
 
             <div className="glass-card !transform-none rounded-lg p-4">
@@ -439,8 +447,8 @@ export function InquiryWizard() {
               <dl className="space-y-2">
                 {selectedBranch.questions.map((q) => (
                   <div key={q.fieldName}>
-                    <dt className="text-cream-300 text-xs">{q.label}</dt>
-                    <dd className="text-cream-50">
+                    <dt className="text-ink-700 text-xs">{q.label}</dt>
+                    <dd className="text-ink-900">
                       {q.inputType === 'select' && q.options
                         ? q.options.find((o) => o.value === answers[q.fieldName])?.label || answers[q.fieldName] || '—'
                         : answers[q.fieldName] || '—'}
@@ -452,11 +460,11 @@ export function InquiryWizard() {
 
             <div className="glass-card !transform-none rounded-lg p-4">
               <h3 className="text-gold-400 text-sm font-medium mb-2">Contact Information</h3>
-              <p className="text-cream-50">{contactInfo.name}</p>
-              <p className="text-cream-300 text-sm">{contactInfo.email}</p>
-              {contactInfo.phone && <p className="text-cream-300 text-sm">{contactInfo.phone}</p>}
+              <p className="text-ink-900">{contactInfo.name}</p>
+              <p className="text-ink-700 text-sm">{contactInfo.email}</p>
+              {contactInfo.phone && <p className="text-ink-700 text-sm">{contactInfo.phone}</p>}
               {contactInfo.message && (
-                <p className="text-cream-300 text-sm mt-2 italic">&ldquo;{contactInfo.message}&rdquo;</p>
+                <p className="text-ink-700 text-sm mt-2 italic">&ldquo;{contactInfo.message}&rdquo;</p>
               )}
             </div>
           </div>

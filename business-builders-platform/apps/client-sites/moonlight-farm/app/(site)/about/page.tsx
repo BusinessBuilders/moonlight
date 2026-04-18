@@ -1,4 +1,7 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
+import { Leaf, Eye, Heart } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { Card, SectionHeading } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
@@ -28,10 +31,10 @@ export default function AboutPage() {
           <ScrollReveal>
             <Card className="p-8 sm:p-14" featured>
               <div className="text-center mb-10">
-                <div className="w-20 h-20 rounded-full border-2 border-gold-500/30 mx-auto mb-5 flex items-center justify-center bg-gradient-to-br from-gold-500/10 to-forest-800/20">
-                  <span className="font-display text-gold-400 text-2xl font-bold">A&J</span>
+                <div className="relative w-full max-w-sm mx-auto mb-8 rounded-2xl overflow-hidden aspect-[4/3] border border-gold-500/20">
+                  <Image src="/angela-jesse.jpg" alt="Angela and Jesse Klayman with Highland calves" fill className="object-cover object-top" sizes="(max-width: 640px) 100vw, 384px" />
                 </div>
-                <h2 className="text-display text-3xl sm:text-4xl text-cream-50 tracking-tight">
+                <h2 className="text-display text-3xl sm:text-4xl text-ink-900 tracking-tight">
                   Angela & Jesse Klayman
                 </h2>
                 <p className="text-label text-gold-400/60 mt-3">Owners, Moonlight Run Farm LLC</p>
@@ -39,7 +42,7 @@ export default function AboutPage() {
 
               <div className="glass-divider mb-10" />
 
-              <div className="text-cream-200/70 leading-relaxed space-y-5 text-lg font-light max-w-2xl mx-auto">
+              <div className="text-ink-800/70 leading-relaxed space-y-5 text-lg font-light max-w-2xl mx-auto">
                 <p>
                   We met in 2018 both owning small farms in Rutland, MA.
                   In 2020, we purchased our current location in Barre — a place where we could
@@ -50,7 +53,7 @@ export default function AboutPage() {
                   quality food production, and a love of animals motivated us. As full-time caregiving
                   nurses in a hospital, we extend our love, knowledge, and skills to our animals.
                 </p>
-                <p className="text-cream-100/90">
+                <p className="text-ink-900/90">
                   Get to know us; we look forward to hearing from you.
                 </p>
               </div>
@@ -58,10 +61,10 @@ export default function AboutPage() {
               <div className="glass-divider mt-10 mb-8" />
 
               <div className="text-center">
-                <p className="font-display text-cream-300/40 italic text-base">
+                <p className="font-display text-ink-700/40 italic text-base">
                   Sincerely,
                 </p>
-                <p className="font-display text-cream-50 text-xl mt-1 font-bold tracking-tight">
+                <p className="font-display text-ink-900 text-xl mt-1 font-bold tracking-tight">
                   Angela & Jesse Klayman
                 </p>
               </div>
@@ -83,31 +86,35 @@ export default function AboutPage() {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {[
-              {
-                icon: '🌱',
-                title: 'Regenerative Agriculture',
-                desc: 'We practice sustainable farming methods that restore the land while producing the highest quality food.',
-              },
-              {
-                icon: '🔍',
-                title: 'Full Transparency',
-                desc: '"Full transparency is our policy." We encourage you to ask questions and come see the animals before processing.',
-                featured: true,
-              },
-              {
-                icon: '❤️',
-                title: 'Compassionate Care',
-                desc: 'As nurses, we bring medical-grade care to every animal. Our livestock receives the same love and attention we give to patients.',
-              },
-            ].map((value, i) => (
+            {(
+              [
+                {
+                  Icon: Leaf,
+                  title: 'Regenerative Agriculture',
+                  desc: 'We practice sustainable farming methods that restore the land while producing the highest quality food.',
+                },
+                {
+                  Icon: Eye,
+                  title: 'Full Transparency',
+                  desc: '"Full transparency is our policy." We encourage you to ask questions and come see the animals before processing.',
+                  featured: true,
+                },
+                {
+                  Icon: Heart,
+                  title: 'Compassionate Care',
+                  desc: 'As nurses, we bring medical-grade care to every animal. Our livestock receives the same love and attention we give to patients.',
+                },
+              ] as { Icon: LucideIcon; title: string; desc: string; featured?: boolean }[]
+            ).map((value, i) => (
               <ScrollReveal key={value.title} delay={i * 120}>
                 <Card className="text-center h-full" featured={value.featured} glow>
-                  <span className="text-4xl mb-5 block">{value.icon}</span>
-                  <h3 className="text-display text-xl text-cream-50 mb-3 tracking-tight">
+                  <div className="w-10 h-10 rounded-lg bg-sage-600/30 border border-gold-500/15 flex items-center justify-center mx-auto mb-5">
+                    <value.Icon className="w-5 h-5 text-gold-400" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-display text-xl text-ink-900 mb-3 tracking-tight">
                     {value.title}
                   </h3>
-                  <p className="text-cream-300/60 text-sm leading-relaxed font-light">
+                  <p className="text-ink-700/60 text-sm leading-relaxed font-light">
                     {value.desc}
                   </p>
                 </Card>
@@ -144,20 +151,20 @@ export default function AboutPage() {
                 />
               </div>
               <div className="p-7">
-                <address className="not-italic text-cream-200/70 font-light">
-                  <strong className="text-cream-50 font-display text-lg font-bold tracking-tight block mb-1">
+                <address className="not-italic text-ink-800/70 font-light">
+                  <strong className="text-ink-900 font-display text-lg font-bold tracking-tight block mb-1">
                     Moonlight Run Farm LLC
                   </strong>
                   1140 South Street, Barre, MA 01005
                   <br />
-                  <span className="badge-gold mt-3 inline-flex text-[0.65rem]">By appointment only</span>
+                  <span className="badge-gold mt-3 inline-flex text-xs">By appointment only</span>
                 </address>
               </div>
             </Card>
           </ScrollReveal>
 
           <ScrollReveal delay={300}>
-            <div className="text-center mt-10">
+            <div className="text-center mt-10 relative z-10">
               <Button variant="secondary" href="/inquiry">
                 Schedule a Visit
               </Button>

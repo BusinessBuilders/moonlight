@@ -38,14 +38,14 @@ export function ProductsSection() {
                   </span>
                 </div>
 
-                <h3 className="font-display text-lg text-cream-50 mb-4 pr-20 font-bold tracking-tight">
+                <h3 className="font-display text-lg text-ink-900 mb-4 pr-20 font-bold tracking-tight">
                   {product.name}
                 </h3>
                 <div className="flex flex-wrap gap-1.5">
                   {product.badges.map((badge) => (
                     <span
                       key={badge}
-                      className="px-2.5 py-1 bg-forest-700/20 rounded-full text-[0.68rem] text-forest-300/70 border border-forest-600/15 font-light"
+                      className="px-2.5 py-1 bg-sage-700/15 rounded-full text-[0.68rem] text-ink-800/75 border border-sage-700/20 font-light"
                     >
                       {badge}
                     </span>

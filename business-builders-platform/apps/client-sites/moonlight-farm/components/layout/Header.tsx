@@ -75,11 +75,11 @@ export function Header() {
                     className={`px-4 py-2 rounded-lg text-[0.82rem] font-medium transition-all duration-500 relative ${
                       scrolled
                         ? isActive
-                          ? 'text-forest-950'
-                          : 'text-forest-900/70 hover:text-forest-950'
+                          ? 'text-ink-900'
+                          : 'text-ink-900/70 hover:text-ink-900'
                         : isActive
-                          ? 'text-cream-50'
-                          : 'text-cream-200/80 hover:text-cream-50'
+                          ? 'text-ink-900'
+                          : 'text-ink-800/80 hover:text-ink-900'
                     }`}
                   >
                     {link.label}
@@ -93,8 +93,8 @@ export function Header() {
                 href="/inquiry"
                 className={`ml-3 px-5 py-2.5 rounded-xl text-[0.82rem] font-semibold transition-all duration-500 ${
                   scrolled
-                    ? 'bg-gradient-to-r from-forest-800 to-forest-900 text-cream-50 shadow-[0_2px_12px_rgba(27,67,50,0.25)] hover:shadow-[0_4px_20px_rgba(27,67,50,0.35)]'
-                    : 'bg-gradient-to-r from-gold-500 to-gold-600 text-forest-950 shadow-[0_2px_12px_rgba(201,149,106,0.25)] hover:shadow-[0_4px_20px_rgba(201,149,106,0.35)]'
+                    ? 'bg-gradient-to-r from-gold-500 to-gold-600 text-ink-900 shadow-[0_2px_12px_rgba(201,149,106,0.25)] hover:shadow-[0_4px_20px_rgba(201,149,106,0.35)]'
+                    : 'bg-gradient-to-r from-gold-500 to-gold-600 text-ink-900 shadow-[0_2px_12px_rgba(201,149,106,0.25)] hover:shadow-[0_4px_20px_rgba(201,149,106,0.35)]'
                 }`}
               >
                 Contact Us
@@ -104,7 +104,7 @@ export function Header() {
             {/* Mobile Menu Button */}
             <button
               className={`lg:hidden p-2 transition-colors duration-500 ${
-                scrolled ? 'text-forest-900 hover:text-forest-950' : 'text-cream-200 hover:text-cream-50'
+                scrolled ? 'text-ink-900 hover:text-ink-900' : 'text-ink-800 hover:text-ink-900'
               }`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
@@ -147,8 +147,8 @@ export function Header() {
                   href={link.href}
                   className={`px-4 py-3 rounded-xl text-[0.95rem] font-medium transition-all duration-300 ${
                     isActive
-                      ? 'text-forest-950 bg-forest-800/5'
-                      : 'text-forest-900/70 hover:text-forest-950 hover:bg-forest-800/5'
+                      ? 'text-ink-900 bg-sage-600/5'
+                      : 'text-ink-900/70 hover:text-ink-900 hover:bg-sage-600/5'
                   }`}
                 >
                   {link.label}
@@ -157,7 +157,7 @@ export function Header() {
             })}
             <Link
               href="/inquiry"
-              className="mt-2 px-4 py-3 rounded-xl text-center font-semibold bg-gradient-to-r from-forest-800 to-forest-900 text-cream-50 hover:from-forest-700 hover:to-forest-800 transition-all"
+              className="mt-2 px-4 py-3 rounded-xl text-center font-semibold bg-gradient-to-r from-gold-500 to-gold-600 text-ink-900 hover:from-gold-400 hover:to-gold-500 transition-all shadow-[0_2px_12px_rgba(201,149,106,0.2)]"
             >
               Contact Us
             </Link>
