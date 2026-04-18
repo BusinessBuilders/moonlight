@@ -46,17 +46,17 @@ export function ServicesSection() {
               <div className="flex flex-col sm:flex-row justify-between items-start gap-6 relative z-10">
                 <div className="flex-1">
                   <p className="text-label text-gold-400/70 mb-3 tracking-[0.2em]">Most Popular</p>
-                  <h3 className="text-display text-2xl sm:text-3xl text-cream-50 mb-3">
+                  <h3 className="text-display text-2xl sm:text-3xl text-ink-900 mb-3">
                     {featuredService.title}
                   </h3>
-                  <p className="text-cream-200/50 text-[0.95rem] font-light leading-relaxed max-w-lg mb-5">
+                  <p className="text-ink-800/75 text-[0.95rem] font-light leading-relaxed max-w-lg mb-5">
                     {featuredService.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {featuredService.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1.5 bg-forest-700/25 rounded-full text-[0.72rem] text-forest-300/80 border border-forest-600/15 font-light"
+                        className="px-3 py-1.5 bg-sage-700/15 rounded-full text-[0.72rem] text-ink-800/80 border border-sage-700/20 font-light"
                       >
                         {tag}
                       </span>
@@ -80,10 +80,10 @@ export function ServicesSection() {
                   <div className="w-12 h-12 mx-auto mb-4 rounded-xl border border-gold-500/15 bg-gold-500/5 flex items-center justify-center group-hover/card:border-gold-400/35 group-hover/card:bg-gold-500/10 group-hover/card:scale-110 group-hover/card:-rotate-3 transition-all duration-500">
                     <service.Icon className="w-6 h-6 text-gold-400/85" strokeWidth={1.5} />
                   </div>
-                  <h3 className="font-display text-sm text-cream-50 mb-1.5 font-bold tracking-tight leading-snug">
+                  <h3 className="font-display text-sm text-ink-900 mb-1.5 font-bold tracking-tight leading-snug">
                     {service.title}
                   </h3>
-                  <p className="text-cream-300/45 text-[0.72rem] leading-relaxed font-light">
+                  <p className="text-ink-800/75 text-[0.72rem] leading-relaxed font-light">
                     {service.description}
                   </p>
                 </Card>

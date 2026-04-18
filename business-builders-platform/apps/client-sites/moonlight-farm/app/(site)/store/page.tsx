@@ -73,9 +73,9 @@ export default function StorePage() {
   return (
     <>
       <PageHero
-        image="/moonlight4.jpg"
-        imageAlt="Highland Cattle at Moonlight Run Farm"
-        imagePosition="center 68%"
+        image="/banner.jpg"
+        imageAlt="Moonlight Run Farm"
+        imagePosition="center 40%"
         label="Farm Store"
         title={<>From Our Farm<br /><span className="gradient-text">To Your Table</span></>}
         description="No hormones. No steroids. No antibiotics."
@@ -86,7 +86,7 @@ export default function StorePage() {
         <div className="absolute top-0 left-0 right-0 glass-divider" />
         <div className="max-w-3xl mx-auto px-4 text-center">
           <ScrollReveal>
-            <p className="text-cream-300/50 text-sm leading-relaxed font-light">
+            <p className="text-cream-100/80 text-sm leading-relaxed font-light">
               We encourage you to ask questions and even come see the animal you will be getting
               before processing. Our meat is processed at local, federally inspected slaughter houses.
             </p>
@@ -102,7 +102,7 @@ export default function StorePage() {
               <ScrollReveal key={product.name} delay={i * 80}>
                 <Card className="flex flex-col h-full" glow>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-label text-cream-300/40">
+                    <span className="text-label text-ink-700/40">
                       {product.category}
                     </span>
                     <span className={`badge text-[0.6rem] ${product.availability === 'seasonal' ? 'badge-gold' : ''}`}>
@@ -112,10 +112,10 @@ export default function StorePage() {
                     </span>
                   </div>
 
-                  <h3 className="text-display text-xl text-cream-50 mb-3 tracking-tight">
+                  <h3 className="text-display text-xl text-ink-900 mb-3 tracking-tight">
                     {product.name}
                   </h3>
-                  <p className="text-cream-300/50 text-sm leading-relaxed mb-5 flex-1 font-light">
+                  <p className="text-ink-700/50 text-sm leading-relaxed mb-5 flex-1 font-light">
                     {product.description}
                   </p>
 
@@ -123,7 +123,7 @@ export default function StorePage() {
                     {product.badges.map((badge) => (
                       <span
                         key={badge}
-                        className="px-2.5 py-1 bg-forest-700/15 rounded-full text-[0.68rem] text-forest-300/60 border border-forest-600/10 font-light"
+                        className="px-2.5 py-1 bg-sage-500/15 rounded-full text-[0.68rem] text-sage-700/60 border border-sage-500/10 font-light"
                       >
                         {badge}
                       </span>
@@ -151,7 +151,7 @@ export default function StorePage() {
               <br />
               <span className="gradient-text">Farm Products</span>
             </h2>
-            <p className="text-cream-200/50 text-lg font-light mb-10 leading-relaxed">
+            <p className="text-cream-100/75 text-lg font-light mb-10 leading-relaxed">
               Send us an inquiry and we&apos;ll get back to you with availability and pricing.
             </p>
             <Button variant="secondary" size="lg" href="/inquiry">

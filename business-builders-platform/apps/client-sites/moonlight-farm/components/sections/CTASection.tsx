@@ -24,7 +24,7 @@ export function CTASection() {
         </Reveal>
 
         <Reveal delay={200}>
-          <p className="text-cream-200/60 text-lg font-light mb-12 max-w-xl mx-auto leading-relaxed">
+          <p className="text-cream-100/75 text-lg font-light mb-12 max-w-xl mx-auto leading-relaxed">
             Whether you&apos;re looking for farm-fresh products, event services, or livestock transport —
             our smart inquiry system will guide you to the right place.
           </p>

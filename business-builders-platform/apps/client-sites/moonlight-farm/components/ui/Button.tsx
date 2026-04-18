@@ -12,13 +12,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'bg-forest-700 text-cream-50 hover:bg-forest-600 border border-forest-600/60 shadow-[0_4px_20px_rgba(45,106,79,0.3)] hover:shadow-[0_8px_30px_rgba(45,106,79,0.4)]',
+    'bg-sage-500 text-ink-900 hover:bg-sage-600 border border-sage-500/60 shadow-[0_4px_20px_rgba(45,106,79,0.3)] hover:shadow-[0_8px_30px_rgba(45,106,79,0.4)]',
   secondary:
-    'bg-gradient-to-r from-gold-500 to-gold-600 text-forest-950 font-semibold border border-gold-400/40 shadow-[0_4px_20px_rgba(201,149,106,0.25)] hover:shadow-[0_8px_30px_rgba(201,149,106,0.4)] hover:from-gold-400 hover:to-gold-500',
+    'bg-gradient-to-r from-gold-500 to-gold-600 text-ink-900 font-semibold border border-gold-400/40 shadow-[0_4px_20px_rgba(201,149,106,0.25)] hover:shadow-[0_8px_30px_rgba(201,149,106,0.4)] hover:from-gold-400 hover:to-gold-500',
   outline:
-    'bg-transparent text-cream-100 border border-cream-300/20 hover:border-cream-300/50 hover:bg-cream-50/[0.03] backdrop-blur-sm',
+    'bg-transparent text-cream-100 border border-cream-300/45 hover:border-cream-300/80 hover:bg-cream-50 hover:text-ink-900 backdrop-blur-sm',
   ghost:
-    'bg-transparent text-cream-200 hover:text-cream-50 hover:bg-forest-800/20 border border-transparent',
+    'bg-transparent text-ink-800 hover:text-ink-900 hover:bg-sage-600/20 border border-transparent',
 }
 
 const sizeClasses: Record<ButtonSize, string> = {

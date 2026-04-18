@@ -20,7 +20,7 @@ export function FacebookSection() {
               <h2 className="text-display text-5xl sm:text-6xl text-cream-50 mb-6">
                 Follow the Farm
               </h2>
-              <p className="text-cream-200/60 text-xl font-light leading-relaxed mb-8">
+              <p className="text-cream-100/75 text-xl font-light leading-relaxed mb-8">
                 See what&apos;s happening at Moonlight Run Farm — new animals, farm
                 updates, and upcoming events. Follow us on Facebook to stay in the loop.
               </p>
@@ -29,8 +29,11 @@ export function FacebookSection() {
                   href="https://www.facebook.com/MoonlightRunFarmLLC"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-xl font-body font-medium transition-all duration-500 px-7 py-3 text-sm tracking-wide bg-forest-700 text-cream-50 hover:bg-forest-600 border border-forest-600/60 shadow-[0_4px_20px_rgba(45,106,79,0.3)] hover:shadow-[0_8px_30px_rgba(45,106,79,0.4)]"
+                  className="inline-flex items-center gap-2 justify-center rounded-xl font-body font-semibold transition-all duration-500 px-7 py-3 text-sm tracking-wide bg-[#1877F2] text-white hover:bg-[#0E5DCC] border border-[#1877F2]/60 shadow-[0_4px_20px_rgba(24,119,242,0.35)] hover:shadow-[0_8px_30px_rgba(24,119,242,0.5)]"
                 >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
                   Follow on Facebook
                 </a>
                 <Button variant="outline" href="/events">
@@ -48,7 +51,7 @@ export function FacebookSection() {
           {/* Right — Facebook embed */}
           <Reveal delay={200}>
             <div className="glass-card rounded-2xl p-3 sm:p-4 !transform-none w-full overflow-hidden">
-              <Suspense fallback={<div className="text-cream-300/40 text-center py-16 text-sm">Loading Facebook feed...</div>}>
+              <Suspense fallback={<div className="text-ink-700/40 text-center py-16 text-sm">Loading Facebook feed...</div>}>
                 <FacebookPageEmbed
                   tabs={['timeline']}
                   width={500}

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
+import { Cake, Building2, Heart, Star, Gift, BookOpen } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { FacebookPageEmbed } from '@/components/facebook/FacebookPageEmbed'
 import { EventsList } from '@/components/events/EventsList'
@@ -29,7 +31,7 @@ export default function EventsPage() {
           <Suspense fallback={
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {Array.from({ length: 4 }).map((_, i) => (
-                <div key={i} className="h-48 rounded-xl bg-forest-900/30 animate-pulse" />
+                <div key={i} className="h-48 rounded-xl bg-stone-100/30 animate-pulse" />
               ))}
             </div>
           }>
@@ -42,28 +44,31 @@ export default function EventsPage() {
       <section className="py-20 relative">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-forest-600/15 to-transparent" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-display text-3xl text-cream-50 mb-10 text-center animate-reveal delay-1">
+          <p className="text-label text-gold-400 mb-4 text-center animate-reveal">Celebrate Here</p>
+          <h2 className="text-display text-4xl sm:text-5xl text-cream-50 mb-10 text-center animate-reveal delay-1">
             Host Your Event With Us
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {[
-              { type: 'Birthday Parties', icon: '🎂', desc: 'Farm-themed birthday parties with friendly animals, hands-on activities, and unforgettable memories.' },
-              { type: 'Corporate Events', icon: '🏢', desc: 'Team-building days, company picnics, and corporate outings in a relaxed farm setting.' },
-              { type: 'Weddings', icon: '💒', desc: 'Rustic charm and beautiful animals make for a truly unique wedding experience.' },
-              { type: 'Bar/Bat Mitzvahs', icon: '✡️', desc: 'Celebrate this milestone with a special farm experience your guests will never forget.' },
-              { type: 'Sweet 16s', icon: '🎀', desc: 'A unique celebration with photo ops, animal interactions, and farm fun.' },
-              { type: 'Educational Tours', icon: '📚', desc: 'Schools, homeschool groups, and scouts learn about farm life and animal care.' },
-            ].map((event) => (
+            {([
+              { type: 'Birthday Parties', Icon: Cake, desc: 'Farm-themed birthday parties with friendly animals, hands-on activities, and unforgettable memories.' },
+              { type: 'Corporate Events', Icon: Building2, desc: 'Team-building days, company picnics, and corporate outings in a relaxed farm setting.' },
+              { type: 'Weddings', Icon: Heart, desc: 'Rustic charm and beautiful animals make for a truly unique wedding experience.' },
+              { type: 'Bar/Bat Mitzvahs', Icon: Star, desc: 'Celebrate this milestone with a special farm experience your guests will never forget.' },
+              { type: 'Sweet 16s', Icon: Gift, desc: 'A unique celebration with photo ops, animal interactions, and farm fun.' },
+              { type: 'Educational Tours', Icon: BookOpen, desc: 'Schools, homeschool groups, and scouts learn about farm life and animal care.' },
+            ] as { type: string; Icon: LucideIcon; desc: string }[]).map((event) => (
               <div key={event.type} className="glass-card rounded-xl p-6">
-                <span className="text-3xl mb-3 block">{event.icon}</span>
-                <h3 className="font-display text-lg text-cream-50 mb-2">{event.type}</h3>
-                <p className="text-cream-300 text-sm leading-relaxed">{event.desc}</p>
+                <div className="w-10 h-10 rounded-lg bg-sage-600/30 border border-gold-500/15 flex items-center justify-center mb-4">
+                  <event.Icon className="w-5 h-5 text-gold-400" strokeWidth={1.5} />
+                </div>
+                <h3 className="font-display text-lg text-ink-900 mb-2">{event.type}</h3>
+                <p className="text-ink-700 text-sm leading-relaxed">{event.desc}</p>
               </div>
             ))}
           </div>
 
-          <div className="text-center">
-            <p className="text-cream-300/60 text-sm mb-6">
+          <div className="text-center relative z-10">
+            <p className="text-cream-100/75 text-sm mb-6">
               Want to host an event at the farm or book a mobile petting zoo?
             </p>
             <Button variant="secondary" href="/inquiry?branch=events">
@@ -77,10 +82,11 @@ export default function EventsPage() {
       <section className="py-20 relative">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/10 to-transparent" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-display text-2xl text-cream-50 mb-8 text-center">Latest from Facebook</h2>
+          <p className="text-label text-gold-400 mb-4 text-center">Stay Connected</p>
+          <h2 className="text-display text-3xl sm:text-4xl text-cream-50 mb-8 text-center">Latest from Facebook</h2>
           <div className="flex justify-center">
             <div className="glass-card rounded-2xl p-4 !transform-none">
-              <Suspense fallback={<div className="text-cream-300/40 text-center py-12 text-sm">Loading feed...</div>}>
+              <Suspense fallback={<div className="text-ink-700/40 text-center py-12 text-sm">Loading feed...</div>}>
                 <FacebookPageEmbed
                   tabs={['timeline']}
                   width={500}
@@ -94,9 +100,9 @@ export default function EventsPage() {
       </section>
 
       {/* Follow CTAs */}
-      <section className="py-8 bg-forest-900/30">
+      <section className="py-8 bg-stone-100/30">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-cream-300 mb-4">
+          <p className="text-ink-700 mb-4">
             Follow us for the latest farm updates, new animals, and event announcements:
           </p>
           <div className="flex justify-center gap-4 flex-wrap">

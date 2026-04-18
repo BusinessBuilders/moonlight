@@ -40,7 +40,7 @@ export function SectionHeading({ label, title, description, align = 'center', cl
         {title}
       </h2>
       {description && (
-        <p className="text-cream-300/80 text-lg font-light leading-relaxed animate-reveal delay-2">
+        <p className="text-cream-100/75 text-lg font-light leading-relaxed animate-reveal delay-2">
           {description}
         </p>
       )}

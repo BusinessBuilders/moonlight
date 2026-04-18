@@ -93,7 +93,7 @@ export function EventsList() {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {Array.from({ length: 4 }).map((_, i) => (
-          <div key={i} className="h-48 rounded-xl bg-forest-900/30 animate-pulse" />
+          <div key={i} className="h-48 rounded-xl bg-stone-100/30 animate-pulse" />
         ))}
       </div>
     )
@@ -103,20 +103,7 @@ export function EventsList() {
   const past = events.filter(e => !isUpcoming(e.startTime))
 
   if (events.length === 0) {
-    return (
-      <motion.div
-        className="text-center py-16"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ type: 'spring' as const, damping: 25, stiffness: 120 }}
-      >
-        <CalendarDays className="w-12 h-12 text-cream-300/30 mx-auto mb-4" strokeWidth={1.5} />
-        <h3 className="text-display text-2xl text-cream-50 mb-3">Events Coming Soon</h3>
-        <p className="text-cream-300/50 font-light max-w-md mx-auto">
-          Check back for upcoming farm events, petting zoos, and seasonal celebrations.
-        </p>
-      </motion.div>
-    )
+    return null
   }
 
   return (
@@ -124,7 +111,7 @@ export function EventsList() {
       {/* Upcoming Events */}
       {upcoming.length > 0 && (
         <div>
-          <h2 className="text-display text-2xl text-cream-50 mb-8">Upcoming Events</h2>
+          <h2 className="text-display text-2xl text-ink-900 mb-8">Upcoming Events</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {upcoming.map((event, i) => (
               <motion.div
@@ -161,14 +148,14 @@ export function EventsList() {
 
                   {/* Event details */}
                   <div className="p-6 flex-1">
-                    <h3 className="font-display text-xl text-cream-50 mb-3 font-bold">{event.title}</h3>
+                    <h3 className="font-display text-xl text-ink-900 mb-3 font-bold">{event.title}</h3>
 
                     <div className="space-y-2 mb-4">
-                      <div className="flex items-center gap-2 text-sm text-cream-300/70">
+                      <div className="flex items-center gap-2 text-sm text-ink-700/70">
                         <CalendarDays className="w-4 h-4 text-gold-400/70 flex-shrink-0" strokeWidth={1.5} />
                         <span>{formatDate(event.startTime)}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-cream-300/70">
+                      <div className="flex items-center gap-2 text-sm text-ink-700/70">
                         <Clock className="w-4 h-4 text-gold-400/70 flex-shrink-0" strokeWidth={1.5} />
                         <span>
                           {formatTime(event.startTime)}
@@ -176,7 +163,7 @@ export function EventsList() {
                         </span>
                       </div>
                       {event.location && (
-                        <div className="flex items-center gap-2 text-sm text-cream-300/70">
+                        <div className="flex items-center gap-2 text-sm text-ink-700/70">
                           <MapPin className="w-4 h-4 text-gold-400/70 flex-shrink-0" strokeWidth={1.5} />
                           <span>{event.location}</span>
                         </div>
@@ -184,7 +171,7 @@ export function EventsList() {
                     </div>
 
                     {event.shortDescription && (
-                      <p className="text-cream-300/50 text-sm font-light leading-relaxed mb-4">
+                      <p className="text-ink-700/50 text-sm font-light leading-relaxed mb-4">
                         {event.shortDescription}
                       </p>
                     )}
@@ -222,12 +209,12 @@ export function EventsList() {
       {/* Past Events */}
       {past.length > 0 && (
         <div>
-          <h2 className="text-display text-xl text-cream-300/50 mb-6">Past Events</h2>
+          <h2 className="text-display text-xl text-ink-700/50 mb-6">Past Events</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {past.slice(0, 6).map((event) => (
               <div key={event.id} className="glass-card rounded-xl p-5 opacity-60">
-                <h3 className="font-display text-sm text-cream-50 mb-2">{event.title}</h3>
-                <div className="flex items-center gap-1.5 text-xs text-cream-300/50">
+                <h3 className="font-display text-sm text-ink-900 mb-2">{event.title}</h3>
+                <div className="flex items-center gap-1.5 text-xs text-ink-700/50">
                   <CalendarDays className="w-3 h-3" strokeWidth={1.5} />
                   <span>{formatDate(event.startTime)}</span>
                 </div>

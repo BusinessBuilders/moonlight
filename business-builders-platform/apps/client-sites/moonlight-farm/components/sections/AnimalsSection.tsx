@@ -31,23 +31,26 @@ export function AnimalsSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Moonlight through fog — blur clears, logo emerges
+      // Iris-open reveal — emerges from center outward on all 4 sides,
+      // layered with fog-to-clarity blur and a warm gold drop-shadow settle.
       gsap.fromTo(
         logoRef.current,
         {
           opacity: 0,
-          scale: 1.15,
-          filter: 'blur(18px) drop-shadow(0 0 0px rgba(201,149,106,0))',
+          scale: 1.4,
+          filter: 'blur(28px) drop-shadow(0 0 0px rgba(201,149,106,0))',
+          clipPath: 'inset(50% 50% 50% 50%)',
         },
         {
           opacity: 1,
           scale: 1,
-          filter: 'blur(0px) drop-shadow(0 0 20px rgba(201,149,106,0.25))',
-          duration: 1.6,
-          ease: 'power2.out',
+          filter: 'blur(0px) drop-shadow(0 0 24px rgba(201,149,106,0.3))',
+          clipPath: 'inset(0% 0% 0% 0%)',
+          duration: 2.2,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: logoRef.current,
-            start: 'top 80%',
+            start: 'top 82%',
             once: true,
           },
         },
@@ -75,11 +78,10 @@ export function AnimalsSection() {
             className="relative w-80 h-80 sm:w-[420px] sm:h-[420px] opacity-0"
           >
             <Image
-              src="/moonlight.png"
+              src="/moonlight-logo.png"
               alt="Moonlight Run Farm — Highland Cattle, Llama, Goat & Chicken under the moon"
               fill
               className="object-contain"
-              style={{ mixBlendMode: 'screen' }}
               sizes="(max-width: 640px) 320px, 420px"
             />
           </div>
@@ -90,7 +92,7 @@ export function AnimalsSection() {
           {animals.map((animal) => (
             <StaggerItem key={animal}>
               <motion.span
-                className="glass-card !transform-none px-5 py-2.5 rounded-full text-cream-200/80 text-sm font-light tracking-wide inline-block cursor-default"
+                className="glass-card !transform-none px-5 py-2.5 rounded-full text-ink-800/85 text-sm font-light tracking-wide inline-block cursor-default"
                 whileHover={{
                   scale: 1.08,
                   backgroundColor: 'rgba(201,149,106,0.12)',

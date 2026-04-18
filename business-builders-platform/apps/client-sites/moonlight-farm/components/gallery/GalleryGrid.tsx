@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Modal } from '@/components/ui/Modal'
+import { staticGallery, type GalleryImage } from '@/lib/galleryData'
 
 const categories = [
   { id: 'all', label: 'All' },
@@ -15,16 +16,6 @@ const categories = [
   { id: 'farm-life', label: 'Farm Life' },
   { id: 'events', label: 'Events' },
 ]
-
-interface GalleryImage {
-  id: string
-  title: string
-  category: string[]
-  description?: string
-  imageUrl: string
-  thumbnailUrl: string
-  alt: string
-}
 
 const PLATFORM_URL = process.env.NEXT_PUBLIC_PLATFORM_URL || 'http://localhost:3003'
 
@@ -74,9 +65,9 @@ export function GalleryGrid() {
             }
           })
 
-        setImages(mapped)
+        setImages(mapped.length > 0 ? mapped : staticGallery)
       } catch {
-        setImages([])
+        setImages(staticGallery)
       } finally {
         setLoading(false)
       }
@@ -96,7 +87,7 @@ export function GalleryGrid() {
         {Array.from({ length: 6 }).map((_, i) => (
           <div
             key={i}
-            className="aspect-[4/3] rounded-xl bg-forest-900/30 animate-pulse"
+            className="aspect-[4/3] rounded-xl bg-stone-100/30 animate-pulse"
           />
         ))}
       </div>
@@ -111,15 +102,15 @@ export function GalleryGrid() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: 'spring' as const, damping: 25, stiffness: 120 }}
       >
-        <div className="w-20 h-20 rounded-full border-2 border-forest-600/20 mx-auto mb-6 flex items-center justify-center">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-cream-300/40">
+        <div className="w-20 h-20 rounded-full border-2 border-sage-500/20 mx-auto mb-6 flex items-center justify-center">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-ink-700/40">
             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
             <circle cx="8.5" cy="8.5" r="1.5"/>
             <polyline points="21 15 16 10 5 21"/>
           </svg>
         </div>
-        <h3 className="text-display text-2xl text-cream-50 mb-3">Gallery Coming Soon</h3>
-        <p className="text-cream-300/50 font-light max-w-md mx-auto">
+        <h3 className="text-display text-2xl text-ink-900 mb-3">Gallery Coming Soon</h3>
+        <p className="text-ink-700/50 font-light max-w-md mx-auto">
           Photos are being uploaded. Check back soon to see our beautiful animals and farm life.
         </p>
       </motion.div>
@@ -148,8 +139,8 @@ export function GalleryGrid() {
               onClick={() => setActiveCategory(cat.id)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 activeCategory === cat.id
-                  ? 'bg-forest-700 text-cream-50 border border-forest-500'
-                  : 'bg-forest-900/30 text-cream-300 border border-forest-700/30 hover:border-forest-600/50'
+                  ? 'bg-sage-500 text-ink-900 border border-sage-500'
+                  : 'bg-stone-100/30 text-ink-700 border border-sage-600/30 hover:border-sage-500/50'
               }`}
             >
               {cat.label}
@@ -189,11 +180,11 @@ export function GalleryGrid() {
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
               {/* Hover overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-forest-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+              <div className="absolute inset-0 bg-gradient-to-t from-cream-100/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                 <div>
-                  <h3 className="font-display text-cream-50 text-lg">{image.title}</h3>
+                  <h3 className="font-display text-ink-900 text-lg">{image.title}</h3>
                   {image.description && (
-                    <p className="text-cream-300/70 text-sm font-light">{image.description}</p>
+                    <p className="text-ink-700/70 text-sm font-light">{image.description}</p>
                   )}
                 </div>
               </div>
@@ -204,7 +195,7 @@ export function GalleryGrid() {
 
       {filteredImages.length === 0 && (
         <div className="text-center py-16">
-          <p className="text-cream-300/50 font-light">No photos in this category yet.</p>
+          <p className="text-ink-700/50 font-light">No photos in this category yet.</p>
         </div>
       )}
 
@@ -216,7 +207,7 @@ export function GalleryGrid() {
       >
         {selectedImage && (
           <div>
-            <div className="relative aspect-[16/10] rounded-lg overflow-hidden mb-4">
+            <div className="relative aspect-[4/3] sm:aspect-[16/10] rounded-lg overflow-hidden mb-4">
               <Image
                 src={selectedImage.imageUrl}
                 alt={selectedImage.alt}
@@ -226,7 +217,7 @@ export function GalleryGrid() {
               />
             </div>
             {selectedImage.description && (
-              <p className="text-cream-300/70 font-light">{selectedImage.description}</p>
+              <p className="text-ink-700/70 font-light">{selectedImage.description}</p>
             )}
           </div>
         )}

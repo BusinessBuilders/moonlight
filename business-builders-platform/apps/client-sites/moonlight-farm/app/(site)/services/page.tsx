@@ -1,4 +1,7 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
+import { Truck, BookOpen, Star, HeartPulse, PawPrint, Tag, Sparkles, ArrowRight } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { Card } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
@@ -10,11 +13,19 @@ export const metadata: Metadata = {
     'Livestock transport, petting zoos, educational programs, livestock services, dog boarding, and animal sales at Moonlight Run Farm.',
 }
 
+function ServiceIcon({ Icon }: { Icon: LucideIcon }) {
+  return (
+    <div className="w-10 h-10 rounded-lg bg-sage-600/30 border border-gold-500/15 flex items-center justify-center flex-shrink-0">
+      <Icon className="w-5 h-5 text-gold-400" strokeWidth={1.5} />
+    </div>
+  )
+}
+
 const services = [
   {
     title: 'Livestock & Equine Transport',
     slug: 'transport',
-    icon: '🚛',
+    Icon: Truck,
     description:
       'Professional livestock and equine hauling nationwide. Safe, insured transport with experienced handlers who treat your animals with the same care we give our own.',
     branch: 'hauling',
@@ -23,7 +34,7 @@ const services = [
   {
     title: 'Educational Programs',
     slug: 'education',
-    icon: '📚',
+    Icon: BookOpen,
     description:
       'Immersive farm education for schools, homeschool groups, scout troops, and families. Learn about regenerative agriculture, animal husbandry, and where your food comes from.',
     branch: 'events',
@@ -32,7 +43,7 @@ const services = [
   {
     title: 'Petting Zoos',
     slug: 'petting-zoos',
-    icon: '🎉',
+    Icon: Star,
     description:
       'We bring the farm to your location! Perfect for corporate events, birthday parties, weddings, Bar/Bat Mitzvahs, Sweet 16s, and any special occasion. Our friendly animals are crowd favorites.',
     branch: 'events',
@@ -42,7 +53,7 @@ const services = [
   {
     title: 'Livestock Services',
     slug: 'livestock-services',
-    icon: '🐄',
+    Icon: HeartPulse,
     description:
       'As nurses by profession, we bring medical-grade care to our livestock services: hoof trimming, catching, sorting, ear tagging, castration, worming, and vaccination.',
     branch: 'general',
@@ -51,7 +62,7 @@ const services = [
   {
     title: 'Dog Boarding',
     slug: 'dog-boarding',
-    icon: '🐕',
+    Icon: PawPrint,
     description:
       'Your dogs enjoy a farm vacation! Safe, supervised stays with our experienced team. Plenty of space to play and explore in a natural farm setting.',
     branch: 'general',
@@ -60,7 +71,7 @@ const services = [
   {
     title: 'Animal Sales',
     slug: 'animal-sales',
-    icon: '🏷️',
+    Icon: Tag,
     description:
       'Quality Scottish Highland Cattle, Nigerian Dwarf Goats, poultry, rabbits, and more. All animals are raised with love on our regenerative farm. We welcome farm visits before purchase.',
     branch: 'animal-sales',
@@ -69,7 +80,7 @@ const services = [
   {
     title: 'Special Events',
     slug: 'special-events',
-    icon: '✨',
+    Icon: Sparkles,
     description:
       'Host your next event at the farm or let us bring the farm experience to your venue. We create unforgettable memories with our beautiful animals and authentic farm setting.',
     branch: 'events',
@@ -95,35 +106,42 @@ export default function ServicesPage() {
           <div className="space-y-5">
             {services.map((service, i) => (
               <ScrollReveal key={service.slug} delay={i * 80}>
-                <Card featured={service.featured} glow>
-                  <div className="flex flex-col lg:flex-row lg:items-start gap-6">
-                    <div className="flex items-start gap-4 lg:w-1/2">
-                      <span className="text-4xl flex-shrink-0">{service.icon}</span>
-                      <div>
-                        <h2 className="text-display text-2xl text-cream-50 mb-3 tracking-tight">
-                          {service.title}
-                        </h2>
-                        <p className="text-cream-300/60 text-sm leading-relaxed font-light">
-                          {service.description}
-                        </p>
+                <Link
+                  href={`/inquiry?branch=${service.branch}`}
+                  aria-label={`Inquire about ${service.title}`}
+                  className="group block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500/50"
+                >
+                  <Card featured={service.featured} glow>
+                    <div className="flex flex-col lg:flex-row lg:items-start gap-6">
+                      <div className="flex items-start gap-4 lg:w-1/2">
+                        <ServiceIcon Icon={service.Icon} />
+                        <div>
+                          <h2 className="text-display text-2xl text-ink-900 mb-3 tracking-tight transition-colors group-hover:text-forest-700">
+                            {service.title}
+                          </h2>
+                          <p className="text-ink-700/60 text-sm leading-relaxed font-light">
+                            {service.description}
+                          </p>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="lg:w-1/2 lg:pl-8 lg:border-l lg:border-forest-600/10">
-                      <div className="grid grid-cols-2 gap-2 mb-5">
-                        {service.features.map((feature) => (
-                          <div key={feature} className="flex items-center gap-2 text-cream-300/50 text-sm">
-                            <span className="w-1 h-1 rounded-full bg-gold-500/50 flex-shrink-0" />
-                            <span className="font-light">{feature}</span>
-                          </div>
-                        ))}
+                      <div className="lg:w-1/2 lg:pl-8 lg:border-l lg:border-sage-500/10">
+                        <div className="grid grid-cols-2 gap-2 mb-5">
+                          {service.features.map((feature) => (
+                            <div key={feature} className="flex items-center gap-2 text-ink-700/50 text-sm">
+                              <span className="w-1 h-1 rounded-full bg-gold-500/50 flex-shrink-0" />
+                              <span className="font-light">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <span className="inline-flex items-center gap-2 text-gold-500 text-sm font-medium tracking-wide transition-all group-hover:gap-3">
+                          Inquire About This Service
+                          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" strokeWidth={1.75} />
+                        </span>
                       </div>
-                      <Button variant="outline" size="sm" href={`/inquiry?branch=${service.branch}`}>
-                        Inquire About This Service
-                      </Button>
                     </div>
-                  </div>
-                </Card>
+                  </Card>
+                </Link>
               </ScrollReveal>
             ))}
           </div>
@@ -143,8 +161,8 @@ export default function ServicesPage() {
               <br />
               <span className="gradient-text">Figure It Out</span>
             </h2>
-            <p className="text-cream-200/50 text-lg font-light mb-10 leading-relaxed">
-              Our smart inquiry system asks the right questions and routes your request to Jesse directly.
+            <p className="text-cream-100/75 text-lg font-light mb-10 leading-relaxed">
+              Our smart inquiry system asks the right questions and gets your request to the right place.
             </p>
             <Button variant="secondary" size="lg" href="/inquiry">
               Start an Inquiry
