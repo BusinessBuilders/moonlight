@@ -30,7 +30,7 @@ export function HeroSection() {
       <div className="absolute bottom-1/4 left-[5%] w-[400px] h-[400px] bg-gold-500/5 rounded-full blur-[120px]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-10">
-        <div className="max-w-4xl">
+        <div className="max-w-4xl mx-auto md:mx-0 text-center md:text-left">
           <HeroReveal index={0}>
             <p className="text-label text-gold-400/80 mb-6">
               Barre, Massachusetts
@@ -73,19 +73,19 @@ export function HeroSection() {
           </motion.div>
 
           <HeroReveal index={3}>
-            <p className="text-gold-400 text-xl sm:text-2xl font-light leading-relaxed max-w-xl mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
+            <p className="text-gold-400 text-xl sm:text-2xl font-light leading-relaxed max-w-xl mx-auto md:mx-0 mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]">
               Highland Cattle & Specialty Animals
             </p>
           </HeroReveal>
 
           <HeroReveal index={4}>
-            <p className="text-ink-700 text-base italic font-display mb-12">
+            <p className="text-white text-base italic font-display mb-12">
               &ldquo;Full transparency is our policy&rdquo;
             </p>
           </HeroReveal>
 
           <HeroReveal index={5}>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
               <Button variant="secondary" size="lg" href="/inquiry">
                 Send Us an Inquiry
               </Button>

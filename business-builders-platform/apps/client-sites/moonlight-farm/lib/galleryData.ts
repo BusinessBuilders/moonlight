@@ -78,4 +78,9 @@ export const staticGallery: GalleryImage[] = [
   { id: '69', title: 'Muscovy Duck', category: ['poultry'], imageUrl: '/gallery/photo-69.jpg', thumbnailUrl: '/gallery/photo-69.jpg', alt: 'Muscovy Duck at Moonlight Run Farm' },
   { id: '70', title: 'Muscovy Duck', category: ['poultry'], imageUrl: '/gallery/photo-70.jpg', thumbnailUrl: '/gallery/photo-70.jpg', alt: 'Muscovy Duck at Moonlight Run Farm' },
   { id: '71', title: 'Highland Bull', category: ['cattle'], imageUrl: '/gallery/photo-71.jpg', thumbnailUrl: '/gallery/photo-71.jpg', alt: 'Scottish Highland Bull at Moonlight Run Farm' },
+  { id: '72', title: 'Yaks', category: ['cattle'], imageUrl: '/gallery/photo-72.jpg', thumbnailUrl: '/gallery/photo-72.jpg', alt: 'Yaks eating hay in the snow at Moonlight Run Farm' },
+  { id: '73', title: 'Llama', category: ['farm-life'], imageUrl: '/gallery/photo-73.jpg', thumbnailUrl: '/gallery/photo-73.jpg', alt: 'Llama close-up at Moonlight Run Farm' },
+  { id: '74', title: 'Llamas & Goats', category: ['farm-life'], imageUrl: '/gallery/photo-74.jpg', thumbnailUrl: '/gallery/photo-74.jpg', alt: 'Llamas and goats at the fence at Moonlight Run Farm' },
+  { id: '75', title: 'Llamas & Goats', category: ['farm-life'], imageUrl: '/gallery/photo-75.jpg', thumbnailUrl: '/gallery/photo-75.jpg', alt: 'Llamas and goats in the snow at Moonlight Run Farm' },
+  { id: '76', title: 'Yaks at Dusk', category: ['cattle'], imageUrl: '/gallery/photo-76.jpg', thumbnailUrl: '/gallery/photo-76.jpg', alt: 'Two yaks at dusk in the snow at Moonlight Run Farm' },
 ]
