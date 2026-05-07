@@ -91,6 +91,17 @@ const defaultBranches: Branch[] = [
           { label: 'Other', value: 'other' },
         ],
       },
+      {
+        fieldName: 'eventLocation',
+        label: 'Where will the event take place?',
+        inputType: 'select',
+        required: true,
+        options: [
+          { label: 'On Farm Visit (come to Moonlight Run Farm)', value: 'on-farm' },
+          { label: 'We Come to Your Location', value: 'off-site' },
+        ],
+      },
+      { fieldName: 'eventAddress', label: 'Event address (if we\'re coming to you)', inputType: 'text', required: false, placeholder: 'Full address or city, state — leave blank for on-farm visits' },
       { fieldName: 'guestCount', label: 'Estimated number of guests?', inputType: 'number', required: true, placeholder: 'Approximate headcount' },
       { fieldName: 'preferredDate', label: 'Preferred date(s)?', inputType: 'text', required: true, placeholder: 'e.g., June 15, 2026 or flexible' },
     ],

@@ -10,7 +10,7 @@ const categories = [
   { id: 'all', label: 'All' },
   { id: 'cattle', label: 'Highland Cattle' },
   { id: 'goats', label: 'Goats' },
-  { id: 'llamas-alpaca', label: 'Llamas & Alpaca' },
+  { id: 'llamas-alpaca', label: 'Llamas' },
   { id: 'poultry', label: 'Poultry & Fowl' },
   { id: 'dogs', label: 'Dogs' },
   { id: 'farm-life', label: 'Farm Life' },
