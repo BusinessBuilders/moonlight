@@ -41,7 +41,6 @@ export const staticGallery: GalleryImage[] = [
   { id: '28', title: 'Highland Cattle', category: ['cattle'], imageUrl: '/gallery/photo-28.jpg', thumbnailUrl: '/gallery/photo-28.jpg', alt: 'Highland Cattle at Moonlight Run Farm' },
   { id: '29', title: 'Llama', category: ['llamas-alpaca'], imageUrl: '/gallery/photo-29.jpg', thumbnailUrl: '/gallery/photo-29.jpg', alt: 'Llama at Moonlight Run Farm' },
   { id: '30', title: 'Llama', category: ['llamas-alpaca'], imageUrl: '/gallery/photo-30.jpg', thumbnailUrl: '/gallery/photo-30.jpg', alt: 'Llama at Moonlight Run Farm' },
-  { id: '31', title: 'Farm Event', category: ['events'], imageUrl: '/gallery/photo-31.jpg', thumbnailUrl: '/gallery/photo-31.jpg', alt: 'Event at Moonlight Run Farm' },
   { id: '32', title: 'Farm Event', category: ['events'], imageUrl: '/gallery/photo-32.jpg', thumbnailUrl: '/gallery/photo-32.jpg', alt: 'Event at Moonlight Run Farm' },
   { id: '33', title: 'Farm Event', category: ['events'], imageUrl: '/gallery/photo-33.jpg', thumbnailUrl: '/gallery/photo-33.jpg', alt: 'Event at Moonlight Run Farm' },
   { id: '34', title: 'Highland Cattle', category: ['cattle'], imageUrl: '/gallery/photo-34.jpg', thumbnailUrl: '/gallery/photo-34.jpg', alt: 'Highland Cattle at Moonlight Run Farm' },
