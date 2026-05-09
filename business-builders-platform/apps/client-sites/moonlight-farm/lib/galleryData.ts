@@ -6,6 +6,7 @@ export interface GalleryImage {
   imageUrl: string
   thumbnailUrl: string
   alt: string
+  photographer?: { name: string; instagram: string }
 }
 
 export const staticGallery: GalleryImage[] = [
@@ -83,4 +84,5 @@ export const staticGallery: GalleryImage[] = [
   { id: '74', title: 'Llamas & Goats', category: ['farm-life'], imageUrl: '/gallery/photo-74.jpg', thumbnailUrl: '/gallery/photo-74.jpg', alt: 'Llamas and goats at the fence at Moonlight Run Farm' },
   { id: '75', title: 'Llamas & Goats', category: ['farm-life'], imageUrl: '/gallery/photo-75.jpg', thumbnailUrl: '/gallery/photo-75.jpg', alt: 'Llamas and goats in the snow at Moonlight Run Farm' },
   { id: '76', title: 'Yaks at Dusk', category: ['cattle'], imageUrl: '/gallery/photo-76.jpg', thumbnailUrl: '/gallery/photo-76.jpg', alt: 'Two yaks at dusk in the snow at Moonlight Run Farm' },
+  { id: '77', title: 'Wedding at the Farm', category: ['events'], imageUrl: '/gallery/photo-77.jpg', thumbnailUrl: '/gallery/photo-77.jpg', alt: 'Bride and groom with a flower-crowned Highland calf at Moonlight Run Farm', photographer: { name: '@katherineebrackman', instagram: 'https://www.instagram.com/katherineebrackman' } },
 ]

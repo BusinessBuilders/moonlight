@@ -186,6 +186,9 @@ export function GalleryGrid() {
                   {image.description && (
                     <p className="text-ink-700/70 text-sm font-light">{image.description}</p>
                   )}
+                  {image.photographer && (
+                    <p className="text-ink-700/60 text-xs mt-0.5">📷 {image.photographer.name}</p>
+                  )}
                 </div>
               </div>
             </motion.button>
@@ -218,6 +221,19 @@ export function GalleryGrid() {
             </div>
             {selectedImage.description && (
               <p className="text-ink-700/70 font-light">{selectedImage.description}</p>
+            )}
+            {selectedImage.photographer && (
+              <p className="text-ink-700/50 text-sm mt-2">
+                📷 Photo by{' '}
+                <a
+                  href={selectedImage.photographer.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-ink-900 transition-colors underline underline-offset-2"
+                >
+                  {selectedImage.photographer.name}
+                </a>
+              </p>
             )}
           </div>
         )}

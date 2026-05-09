@@ -78,8 +78,8 @@ export function Header() {
                           ? 'text-ink-900'
                           : 'text-ink-900/70 hover:text-ink-900'
                         : isActive
-                          ? 'text-ink-900'
-                          : 'text-ink-800/80 hover:text-ink-900'
+                          ? 'text-cream-50'
+                          : 'text-cream-100/80 hover:text-cream-50'
                     }`}
                   >
                     {link.label}
@@ -104,7 +104,7 @@ export function Header() {
             {/* Mobile Menu Button */}
             <button
               className={`lg:hidden p-2 transition-colors duration-500 ${
-                scrolled ? 'text-ink-900 hover:text-ink-900' : 'text-ink-800 hover:text-ink-900'
+                scrolled ? 'text-ink-900 hover:text-ink-900' : 'text-cream-50 hover:text-cream-50'
               }`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
