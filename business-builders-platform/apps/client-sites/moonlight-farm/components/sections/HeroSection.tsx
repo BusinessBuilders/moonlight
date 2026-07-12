@@ -79,12 +79,26 @@ export function HeroSection() {
           </HeroReveal>
 
           <HeroReveal index={4}>
-            <p className="text-white text-base italic font-display mb-12">
+            <p className="text-white text-base italic font-display mb-8">
               &ldquo;Full transparency is our policy&rdquo;
             </p>
           </HeroReveal>
 
           <HeroReveal index={5}>
+            <div className="mb-10 flex justify-center md:justify-start">
+              <span className="inline-flex items-center gap-2.5 rounded-full bg-ink-900/85 backdrop-blur-sm px-4 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-lg font-bold uppercase tracking-wide text-gold-300 ring-1 ring-gold-400/40 shadow-[0_6px_24px_rgba(0,0,0,0.45)] text-center leading-snug">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                Visits by appointment only
+              </span>
+            </div>
+          </HeroReveal>
+
+          <HeroReveal index={6}>
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
               <Button variant="secondary" size="lg" href="/inquiry">
                 Send Us an Inquiry

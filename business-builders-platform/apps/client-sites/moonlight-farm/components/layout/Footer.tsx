@@ -67,7 +67,7 @@ export function Footer() {
                 Barre, MA 01005
               </address>
               <p className="mt-3">
-                <span className="badge-gold text-xs">By appointment only</span>
+                <span className="badge-gold text-sm font-bold px-4 py-1.5">By appointment only</span>
               </p>
             </div>
 

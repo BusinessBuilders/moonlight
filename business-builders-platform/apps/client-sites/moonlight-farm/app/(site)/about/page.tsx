@@ -157,7 +157,7 @@ export default function AboutPage() {
                   </strong>
                   1140 South Street, Barre, MA 01005
                   <br />
-                  <span className="badge-gold mt-3 inline-flex text-xs">By appointment only</span>
+                  <span className="badge-gold mt-3 inline-flex text-base font-bold px-4 py-2">By appointment only</span>
                 </address>
               </div>
             </Card>
